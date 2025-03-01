@@ -67,7 +67,7 @@ export default function GalleryPage() {
               <div
                 key={sculpture.id}
                 className="group cursor-pointer"
-                data-aos="fade-up"
+                data-aos="flip-right"
                 data-aos-delay={index * 50}
               >
                 <Link href={`/sculpture/${sculpture.id}`}>
