@@ -148,7 +148,7 @@ export default function HomePage() {
                 <Link href={`/sculpture/${sculpture.id}`}>
                   <div className="relative aspect-[3/4] overflow-hidden mb-6">
                     <Image
-                      src={``}
+                      src={`/banner.webp`}
                       alt={sculpture.title}
                       fill
                       className="object-cover transition-transform duration-700 group-hover:scale-110"
