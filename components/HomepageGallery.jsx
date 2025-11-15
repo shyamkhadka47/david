@@ -116,7 +116,7 @@ const HomepageGallery = () => {
 
         {/* View All Button */}
         <div className="text-center">
-          <Link href={"/gallery"} className="border-2 border-museum-dark text-museum-dark hover:bg-museum-dark hover:text-white uppercase tracking-wide py-3 px-8 rounded-lg transition-all duration-300">
+          <Link href={"/gallery"} className="border-2 border-museum-gold bg-museum-gold text-museum-dark hover:bg-museum-gold/90 font-medium uppercase tracking-wide py-3 px-8 rounded-lg transition-all duration-300">
             View All Collections
           </Link>
         </div>

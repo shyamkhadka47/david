@@ -1,5 +1,6 @@
 import { Clock, MapPin, Phone } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const Hero = () => {
   return (
@@ -43,13 +44,13 @@ const Hero = () => {
 
             {/* Buttons */}
             <div className="flex flex-wrap gap-4">
-              <button className="bg-museum-gold hover:bg-museum-gold/90 text-museum-dark font-medium uppercase tracking-wide py-3 px-8 rounded-lg transition-colors">
+              <Link href={"/gallery"} className="bg-museum-gold hover:bg-museum-gold/90 text-museum-dark font-medium uppercase tracking-wide py-3 px-8 rounded-lg transition-colors">
                 View Exhibition
-              </button>
+              </Link>
 
-              <button className="border border-white text-white hover:bg-white hover:text-museum-dark font-medium uppercase tracking-wide py-3 px-8 rounded-lg transition-colors">
-                Book Tickets
-              </button>
+              <Link href={"/contact"} className="border border-white text-white hover:bg-white hover:text-museum-dark font-medium uppercase tracking-wide py-3 px-8 rounded-lg transition-colors">
+                Contact Us
+              </Link>
             </div>
           </div>
 
