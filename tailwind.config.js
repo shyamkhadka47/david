@@ -11,6 +11,7 @@ export const theme = {
       museum:{
         gold:"#eeb32b",
         dark:"#000000",
+        brown:"#6b5947",
       },
       foreground: "var(--foreground)",
     },

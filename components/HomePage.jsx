@@ -4,6 +4,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 import Hero from "./Hero";
+import AboutSection from "./AboutSection";
+import HomepageGallery from "./HomepageGallery";
 
 export default function HomePage() {
   const sculptures = [
@@ -51,26 +53,7 @@ export default function HomePage() {
     },
   ];
 
-  const artists = [
-    {
-      id: 1,
-      name: "Elena Markov",
-      specialty: "Contemporary Sculptor",
-      bio: "Known for her innovative approach to traditional materials, creating pieces that challenge conventional perceptions of form and space.",
-    },
-    {
-      id: 2,
-      name: "Marcus Chen",
-      specialty: "Abstract Expressionist",
-      bio: "Explores the intersection of emotion and physical form through dynamic sculptures that seem to capture movement in static materials.",
-    },
-    {
-      id: 3,
-      name: "Sophia Reyes",
-      specialty: "Minimalist Sculptor",
-      bio: "Creates elegant, refined works that celebrate the inherent beauty of simple forms and the subtle interplay of light and shadow.",
-    },
-  ];
+  
 
   return (
     <main className="min-h-screen overflow-x-hidden">
@@ -78,7 +61,7 @@ export default function HomePage() {
      <Hero/>
 
       {/* Gallery Section */}
-      <section id="gallery" className="py-32 px-[5%] md:px-[10%] bg-white">
+      {/* <section id="gallery" className="py-32 px-[5%] md:px-[10%] bg-white">
         <div className="container mx-auto px-4">
           <div data-aos="fade-up">
             <h2 className="text-4xl md:text-5xl font-serif mb-4 text-center">
@@ -138,8 +121,8 @@ export default function HomePage() {
             </Link>
           </div>
         </div>
-      </section>
-
+      </section> */}
+<HomepageGallery/>
       {/* About Section */}
       <section id="about" className="py-32  bg-gray-100">
         <div className="container mx-auto px-[5%] md:px-[10%] ">
@@ -183,47 +166,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Artists Section */}
-      <section id="artists" className="py-32 px-[5%] md:px-[10%] bg-white">
-        <div className="container mx-auto px-4">
-          <div data-aos="fade-up">
-            <h2 className="text-4xl md:text-5xl font-serif mb-4 text-center">
-              Featured Artists
-            </h2>
-            <p className="text-gray-600 text-center max-w-xl mx-auto mb-16">
-              Meet the visionary creators behind our extraordinary collection of
-              sculptures.
-            </p>
-          </div>
+      <AboutSection/>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {artists.map((artist, index) => (
-              <div
-                key={artist.id}
-                className="text-center group"
-                data-aos="fade-up"
-                data-aos-delay={index * 50}
-              >
-                <div className="relative min-w-[220px] h-64 mx-auto mb-8 overflow-hidden">
-                  <div className="absolute inset-4 border border-amber-500 z-10" />
-                  <div className="absolute inset-0 bg-gray-100 transform group-hover:scale-110 transition-transform duration-700" />
-                  <Image
-                    src={`/placeholder.svg?height=300&width=300`}
-                    alt={artist.name}
-                    fill
-                    className="object-cover transform group-hover:scale-110 transition-transform duration-700"
-                  />
-                </div>
-                <h3 className="text-2xl font-serif mb-2">{artist.name}</h3>
-                <p className="text-amber-500 font-medium mb-4">
-                  {artist.specialty}
-                </p>
-                <p className="text-gray-600 max-w-md mx-auto">{artist.bio}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
     </main>
   );
 }
