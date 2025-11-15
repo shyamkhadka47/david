@@ -8,10 +8,9 @@ const Hero = () => {
       <div className="absolute min-h-screen inset-0">
         <div className="w-full h-full inset-0 ">
           <Image
-            src="/hero-museum.jpg"
+            src="/The Universe 11”x11”x6”  Carrara marble.webp"
             alt="Museum Interior"
-            width={800}
-            height={600}
+           fill
             priority
             className="w-full h-full object-cover"
           />

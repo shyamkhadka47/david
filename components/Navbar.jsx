@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Menu, X, ShoppingBag, Search } from "lucide-react";
+import Link from "next/link";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,26 +14,26 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background backdrop-blur-sm border-b border-border">
       <div className="container mx-auto px-[5%] md:px-[10%]">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <a href="#" className="flex items-center space-x-2">
+          <Link href="/" className="flex items-center space-x-2">
             <div className="w-12 h-12 border-2 border-foreground flex items-center justify-center">
               <span className="font-serif text-2xl font-bold">D</span>
             </div>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
                 href={link.href}
                 className="text-sm font-medium text-foreground hover:text-accent transition-colors tracking-wide uppercase"
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
           </div>
 
@@ -41,12 +42,12 @@ const Navbar = () => {
             <button
               className="flex items-center justify-center p-2 hover:bg-accent/20 rounded-full transition-colors focus:outline-none"
             >
-              {/* <Search className="h-5 w-5 text-foreground" /> */}
+              <Search className="h-5 w-5 text-foreground" />
             </button>
             <button
               className="flex items-center justify-center p-2 hover:bg-accent/20 rounded-full transition-colors focus:outline-none"
             >
-              {/* <ShoppingBag className="h-5 w-5 text-foreground" /> */}
+              <ShoppingBag className="h-5 w-5 text-foreground" />
             </button>
           </div>
 
@@ -63,14 +64,14 @@ const Navbar = () => {
         {isOpen && (
           <div className="md:hidden py-4 animate-fade-in-up">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
                 href={link.href}
                 className="block py-3 text-sm font-medium text-foreground hover:text-accent transition-colors tracking-wide uppercase"
                 onClick={() => setIsOpen(false)}
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
           </div>
         )}

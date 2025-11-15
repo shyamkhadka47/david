@@ -129,7 +129,7 @@ export default function HomePage() {
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div className="relative aspect-square" data-aos="fade-right">
               <Image
-                src="/banner.webp"
+                src="/MotherandChild15x5x3.5Soapstone.webp"
                 alt="Studio"
                 fill
                 className="object-cover"

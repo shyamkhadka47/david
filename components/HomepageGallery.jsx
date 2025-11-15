@@ -1,13 +1,14 @@
 
 import Image from "next/image";
+import Link from "next/link";
 
 const collections = [
   {
     id: 1,
     title: "Geometric Harmony",
     artist: "Marina Delacroix",
-    category: "Contemporary",
-    image: "/art-1.jpg",
+    category: "Sculpture",
+    image: "/IMG 3172.png",
     year: "2024",
   },
   {
@@ -15,46 +16,46 @@ const collections = [
     title: "Classical Revival",
     artist: "Historical Collection",
     category: "Sculpture",
-    image: "/art-2.jpg",
+    image: "/Hugs and Kisses.png",
     year: "2023",
   },
   {
     id: 3,
     title: "Minimalist Forms",
     artist: "Chen Wei",
-    category: "Installation",
-    image: "/art-3.jpg",
+    category: "Sculpture",
+    image: "/IMG_3592.webp",
     year: "2024",
   },
   {
     id: 4,
     title: "Abstract Narratives",
     artist: "Sofia Torres",
-    category: "Contemporary",
-    image: "/art-4.jpg",
+    category: "Sculpture",
+    image: "/Seer.webp",
     year: "2024",
   },
   {
     id: 5,
     title: "Elegant Figures",
     artist: "Alexandre Rousseau",
-    category: "Portraiture",
-    image: "/art-5.jpg",
+    category: "Scupture",
+    image: "/IMG_3600.webp",
     year: "2023",
   },
   {
     id: 6,
     title: "Ethereal Dreams",
-    artist: "Luna Martinez",
-    category: "Photography",
-    image: "/art-6.jpg",
+    artist: "David Stuchicacho",
+    category: "Sculpture",
+    image: "/mementoVita.webp",
     year: "2024",
   },
 ];
 
 const HomepageGallery = () => {
   return (
-    <section id="collections" className="py-24 bg-secondary/30">
+    <section id="collections" className="py-24 bg-white">
       <div className="container mx-auto px-[5%] md:px-[10%]">
         {/* Section Header */}
         <div className="text-center mb-16 animate-fade-in-up">
@@ -115,9 +116,9 @@ const HomepageGallery = () => {
 
         {/* View All Button */}
         <div className="text-center">
-          <button className="border-2 border-museum-dark text-museum-dark hover:bg-museum-dark hover:text-white uppercase tracking-wide py-3 px-8 rounded-lg transition-all duration-300">
+          <Link href={"/gallery"} className="border-2 border-museum-dark text-museum-dark hover:bg-museum-dark hover:text-white uppercase tracking-wide py-3 px-8 rounded-lg transition-all duration-300">
             View All Collections
-          </button>
+          </Link>
         </div>
       </div>
     </section>

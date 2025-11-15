@@ -1,98 +1,157 @@
-import Link from "next/link";
+import { Facebook, Instagram, Twitter, Youtube } from "lucide-react";
 
-export default function Footer() {
+const Footer = () => {
   return (
-    <footer className="py-12 bg-black text-white/70 border-t border-white/10 px-[5%] md:px-[10%]">
-      <section id="contact" className="py-32 bg-black px-[5%] text-white">
-        <div className="flex flex-col gap-10">
-          <div data-aos="fade-up">
-            <h2 className="text-4xl md:text-5xl font-serif mb-4 text-center">
-              Connect With Us
-            </h2>
-            <p className="text-white/80 text-center text-lg mb-16">
-              Visit our gallery in person or contact us to arrange a private
-              viewing of our collection.
+    <footer className="bg-museum-dark text-white pt-16 pb-8">
+      <div className="container mx-auto px-[5%] md:px-[10%]" >
+        {/* Newsletter Section */}
+       
+
+        {/* Main Footer Content */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+          {/* Brand */}
+          <div>
+            <div className="flex items-center space-x-2 mb-4">
+              <div className="w-12 h-12 border-2 border-white flex items-center justify-center">
+                <span className="font-serif text-2xl font-bold">D</span>
+              </div>
+            </div>
+            <p className="text-white/70 text-sm mb-4">
+              Artisan Museum celebrates the intersection of tradition and innovation in contemporary art.
             </p>
-          </div>
-          <div className="flex flex-col flex-wrap md:flex-row justify-center md:justify-between items-center gap-[50px]">
-            {/* About Us Section on Left Side */}
-            <div data-aos="flip-left" className="md:w-1/3">
-              <h3 className="text-2xl font-serif mb-6 text-amber-500">
-                About Us
-              </h3>
-              <p className="text-lg">
-                David Sculptures is a premier gallery showcasing the finest
-                sculptures from renowned and emerging artists. Our mission is to
-                bring art to life and connect collectors with unique,
-                handcrafted works of art. We believe in the power of sculpture
-                to inspire and elevate spaces, creating lasting impressions and
-                meaningful connections.
-              </p>
-            </div>
-
-            {/* Gallery Hours Section */}
-            <div data-aos="flip-left">
-              <h3 className="text-2xl font-serif mb-6 text-amber-500">
-                Gallery Hours
-              </h3>
-              <div className="space-y-4 text-lg">
-                <p className="flex justify-between">
-                  <span>Tuesday - Friday</span>
-                  <span>10:00 AM - 6:00 PM</span>
-                </p>
-                <p className="flex justify-between">
-                  <span>Saturday</span>
-                  <span>11:00 AM - 5:00 PM</span>
-                </p>
-                <p className="flex space-x-4">
-                  <span>Sunday - Monday</span>
-                  <span>By Appointment Only</span>
-                </p>
-              </div>
-            </div>
-
-            {/* Contact Information Section */}
-            <div data-aos="flip-left" data-aos-delay="90">
-              <h3 className="text-2xl font-serif mb-6 text-amber-500">
-                Contact Information
-              </h3>
-              <div className="space-y-4 text-lg">
-                <p>123 Art District Avenue</p>
-                <p>New York, NY 10001</p>
-                <p className="text-amber-500">info@Davidsculptures.com</p>
-                <p>+1 (212) 555-7890</p>
-              </div>
+            <div className="flex gap-3">
+              <a href="#" className="text-white hover:text-museum-gold transition-colors">
+                <Facebook className="h-5 w-5" />
+              </a>
+              <a href="#" className="text-white hover:text-museum-gold transition-colors">
+                <Instagram className="h-5 w-5" />
+              </a>
+              <a href="#" className="text-white hover:text-museum-gold transition-colors">
+                <Twitter className="h-5 w-5" />
+              </a>
+              <a href="#" className="text-white hover:text-museum-gold transition-colors">
+                <Youtube className="h-5 w-5" />
+              </a>
             </div>
           </div>
-          <div className="text-center" data-aos="fade-up">
-            <Link
-              href="/contact"
-              className="inline-block bg-amber-500 text-black px-10 py-4 text-lg font-semibold hover:bg-amber-400 transition-colors duration-300"
-            >
-              Schedule a Visit
-            </Link>
+
+          {/* Visit */}
+          <div>
+            <h4 className="font-serif text-lg font-semibold mb-4">Visit</h4>
+            <ul className="space-y-2 text-sm text-white/70">
+              <li>
+                <a href="#" className="hover:text-museum-gold transition-colors">
+                  Plan Your Visit
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-museum-gold transition-colors">
+                  Tickets & Pricing
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-museum-gold transition-colors">
+                  Opening Hours
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-museum-gold transition-colors">
+                  Accessibility
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-museum-gold transition-colors">
+                  Getting Here
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Explore */}
+          <div>
+            <h4 className="font-serif text-lg font-semibold mb-4">Explore</h4>
+            <ul className="space-y-2 text-sm text-white/70">
+              <li>
+                <a href="#" className="hover:text-museum-gold transition-colors">
+                  Current Exhibitions
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-museum-gold transition-colors">
+                  Collections
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-museum-gold transition-colors">
+                  Virtual Tours
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-museum-gold transition-colors">
+                  Events & Programs
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-museum-gold transition-colors">
+                  Museum Shop
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Support */}
+          <div>
+            <h4 className="font-serif text-lg font-semibold mb-4">Support</h4>
+            <ul className="space-y-2 text-sm text-white/70">
+              <li>
+                <a href="#" className="hover:text-museum-gold transition-colors">
+                  Membership
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-museum-gold transition-colors">
+                  Donate
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-museum-gold transition-colors">
+                  Corporate Partners
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-museum-gold transition-colors">
+                  Volunteer
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-museum-gold transition-colors">
+                  Contact Us
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
-      </section>
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="text-xl font-serif mb-6 md:mb-0 tracking-wider">
-            David<span className="text-amber-500">.</span>
-          </div>
-          <div className="text-sm">
-            © {new Date().getFullYear()} David Sculptures. All rights reserved.
-          </div>
-          <div className="relative">
-            Developed By{" "}
-            <Link
-              href={"https://designtechjoy.com"}
-              className="before:absolute before:bg-amber-500 before:w-full before:left-0 before:h-[3px] before:content-[' '] before:top-7 "
-            >
-              Design Tech Joy
-            </Link>
+
+        {/* Bottom Bar */}
+        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-sm text-white/50">
+            © 2024 Artisan Museum. All rights reserved.
+          </p>
+          <div className="flex gap-6 text-sm text-white/50">
+            <a href="#" className="hover:text-museum-gold transition-colors">
+              Privacy Policy
+            </a>
+            <a href="#" className="hover:text-museum-gold transition-colors">
+              Terms of Service
+            </a>
+            <a href="#" className="hover:text-museum-gold transition-colors">
+              Cookie Settings
+            </a>
           </div>
         </div>
       </div>
     </footer>
   );
-}
+};
+
+export default Footer;

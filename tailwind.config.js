@@ -7,7 +7,7 @@ export const content = [
 export const theme = {
   extend: {
     colors: {
-      background: "#fdfdfd",
+      background: "#ffffff",
       museum:{
         gold:"#eeb32b",
         dark:"#000000",
