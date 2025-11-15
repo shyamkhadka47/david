@@ -17,8 +17,6 @@ export default function PageWrapper({ children }) {
 
   return (
     <>
-        
-
       <Navbar />
       {children}
       <Footer />

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
+import Hero from "./Hero";
 
 export default function HomePage() {
   const sculptures = [
@@ -74,55 +75,7 @@ export default function HomePage() {
   return (
     <main className="min-h-screen overflow-x-hidden">
       {/* Hero Section */}
-      <section
-        id="hero"
-        className="relative w-full min-h-screen overflow-hidden"
-      >
-        <div className="absolute inset-0">
-          <Image
-            src="/placeholder.svg?height=1800&width=1200"
-            alt="Featured Sculpture"
-            fill
-            priority
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
-        </div>
-
-        {/* Hero Content */}
-        <div className="relative z-10 container mx-auto px-4 h-screen flex flex-col justify-center items-center">
-          <div
-            className="max-w-2xl text-center"
-            data-aos="fade-up"
-            data-aos-delay="100"
-          >
-            <h1 className="text-5xl md:text-7xl font-serif text-white mb-6 leading-tight">
-              Timeless Beauty <br />
-              in <span className="text-amber-500">Form</span>
-            </h1>
-            <p className="text-lg text-white/90 mb-10 max-w-md mx-auto">
-              Discover extraordinary sculptures that transcend time and space,
-              crafted by master Davids.
-            </p>
-            <Link
-              href="#gallery"
-              className="inline-block bg-amber-500 text-black px-10 py-4 text-lg font-semibold hover:bg-amber-400 transition-colors duration-300"
-            >
-              Explore Collection
-            </Link>
-          </div>
-
-          <div
-            className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-            data-aos="fade-up"
-            data-aos-delay="200"
-          >
-            <Link href="#gallery" className="text-white animate-bounce">
-              <ChevronDown className="h-8 w-8" />
-            </Link>
-          </div>
-        </div>
-      </section>
+     <Hero/>
 
       {/* Gallery Section */}
       <section id="gallery" className="py-32 px-[5%] md:px-[10%] bg-white">
