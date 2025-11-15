@@ -18,18 +18,21 @@ const Navbar = () => {
       <nav className="container mx-auto px-[5%] md:px-[10%]">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="/" className="">
-            <Image
-              src="/logo.png"
-              alt="Logo of David"
-              width={150}
-              height={75}
-              sizes="150px"
-            />
-            {/* <div className="w-12 h-12 border-2 border-foreground flex items-center justify-center">
+          <div className="h-[50px]">
+            <Link href="/" >
+              <Image
+                src="/logo.png"
+                alt="Logo of David"
+                width={150}
+                height={75}
+                sizes="150px"
+                className="w-full h-full object-cover"
+              />
+              {/* <div className="w-12 h-12 border-2 border-foreground flex items-center justify-center">
               <span className="font-serif text-2xl font-bold">D</span>
             </div> */}
-          </Link>
+            </Link>
+          </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">

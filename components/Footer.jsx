@@ -18,7 +18,7 @@ const Footer = () => {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
           <div>
-            <div className="flex items-center space-x-2 mb-4">
+            <div className="flex items-center space-x-2 mb-4 ">
              <Image src={"/logo.png"} width={150} height={75} alt="Logo" sizes="150px"/>
             </div>
             <p className="text-black/70 text-sm mb-4">
