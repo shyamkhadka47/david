@@ -7,13 +7,13 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 export default function PageWrapper({ children }) {
-  useEffect(() => {
-    AOS.init({
-      duration: 400,
-      once: true,
-      easing: "ease-out-cubic",
-    });
-  }, []);
+  // useEffect(() => {
+  //   AOS.init({
+  //     duration: 400,
+  //     once: true,
+  //     easing: "ease-out-cubic",
+  //   });
+  // }, []);
 
   return (
     <>

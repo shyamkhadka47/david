@@ -2,7 +2,7 @@ import { Facebook, Instagram, Twitter, Youtube } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-museum-dark text-white pt-16 pb-8">
+    <footer className="bg-gray-100 text-black pt-16 pb-8 ">
       <div className="container mx-auto px-[5%] md:px-[10%]" >
         {/* Newsletter Section */}
        
@@ -12,24 +12,24 @@ const Footer = () => {
           {/* Brand */}
           <div>
             <div className="flex items-center space-x-2 mb-4">
-              <div className="w-12 h-12 border-2 border-white flex items-center justify-center">
+              <div className="w-12 h-12 border-2 border-museum-dark flex items-center justify-center">
                 <span className="font-serif text-2xl font-bold">D</span>
               </div>
             </div>
-            <p className="text-white/70 text-sm mb-4">
+            <p className="text-black/70 text-sm mb-4">
               Artisan Museum celebrates the intersection of tradition and innovation in contemporary art.
             </p>
             <div className="flex gap-3">
-              <a href="#" className="text-white hover:text-museum-gold transition-colors">
+              <a href="#" className="text-black hover:text-museum-gold transition-colors">
                 <Facebook className="h-5 w-5" />
               </a>
-              <a href="#" className="text-white hover:text-museum-gold transition-colors">
+              <a href="#" className="text-black hover:text-museum-gold transition-colors">
                 <Instagram className="h-5 w-5" />
               </a>
-              <a href="#" className="text-white hover:text-museum-gold transition-colors">
+              <a href="#" className="text-black hover:text-museum-gold transition-colors">
                 <Twitter className="h-5 w-5" />
               </a>
-              <a href="#" className="text-white hover:text-museum-gold transition-colors">
+              <a href="#" className="text-black hover:text-museum-gold transition-colors">
                 <Youtube className="h-5 w-5" />
               </a>
             </div>
@@ -38,7 +38,7 @@ const Footer = () => {
           {/* Visit */}
           <div>
             <h4 className="font-serif text-lg font-semibold mb-4">Visit</h4>
-            <ul className="space-y-2 text-sm text-white/70">
+            <ul className="space-y-2 text-sm text-black/70">
               <li>
                 <a href="#" className="hover:text-museum-gold transition-colors">
                   Plan Your Visit
@@ -70,7 +70,7 @@ const Footer = () => {
           {/* Explore */}
           <div>
             <h4 className="font-serif text-lg font-semibold mb-4">Explore</h4>
-            <ul className="space-y-2 text-sm text-white/70">
+            <ul className="space-y-2 text-sm text-black/70">
               <li>
                 <a href="#" className="hover:text-museum-gold transition-colors">
                   Current Exhibitions
@@ -102,7 +102,7 @@ const Footer = () => {
           {/* Support */}
           <div>
             <h4 className="font-serif text-lg font-semibold mb-4">Support</h4>
-            <ul className="space-y-2 text-sm text-white/70">
+            <ul className="space-y-2 text-sm text-black/70">
               <li>
                 <a href="#" className="hover:text-museum-gold transition-colors">
                   Membership
@@ -134,10 +134,10 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-white/50">
+          <p className="text-sm text-black/50">
             © 2024 Artisan Museum. All rights reserved.
           </p>
-          <div className="flex gap-6 text-sm text-white/50">
+          <div className="flex gap-6 text-sm text-black/50">
             <a href="#" className="hover:text-museum-gold transition-colors">
               Privacy Policy
             </a>

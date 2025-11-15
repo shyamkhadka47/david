@@ -127,7 +127,7 @@ export default function HomePage() {
       <section id="about" className="py-32  bg-gray-100">
         <div className="container mx-auto px-[5%] md:px-[10%] ">
           <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div className="relative aspect-square" data-aos="fade-right">
+            <div className="relative aspect-square">
               <Image
                 src="/MotherandChild15x5x3.5Soapstone.webp"
                 alt="Studio"
@@ -137,7 +137,7 @@ export default function HomePage() {
               <div className="absolute -bottom-8 -right-8 w-48 h-48 bg-amber-500" />
             </div>
 
-            <div data-aos="fade-left">
+            <div>
               <h2 className="text-4xl md:text-5xl font-serif mb-8">
                 Our Artistic Vision
               </h2>

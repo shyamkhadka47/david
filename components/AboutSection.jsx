@@ -1,6 +1,6 @@
 const AboutSection = () => {
   return (
-    <section id="about" className="py-24 bg-gradient-to-br from-museum-dark/80 to-museum-brown text-white">
+    <section id="about" className="py-24 bg-gray-50 text-black">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center animate-fade-in-up">
           <p className="text-sm uppercase tracking-widest mb-4 text-museum-gold font-sans">
@@ -9,7 +9,7 @@ const AboutSection = () => {
           <h2 className="font-serif text-4xl md:text-5xl font-bold mb-8">
             A Legacy of Artistic Excellence
           </h2>
-          <div className="space-y-6 text-lg text-white/90 mb-12">
+          <div className="space-y-6 text-lg text-black/90 mb-12">
             <p>
               For over half a century, Artisan Museum has been a beacon of
               cultural enrichment, showcasing the finest examples of human
