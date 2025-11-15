@@ -8,57 +8,10 @@ import AboutSection from "./AboutSection";
 import HomepageGallery from "./HomepageGallery";
 
 export default function HomePage() {
-  const sculptures = [
-    {
-      id: 1,
-      title: "Ethereal Flow",
-      material: "Bronze & Marble",
-      year: "2023",
-      featured: true,
-    },
-    {
-      id: 2,
-      title: "Temporal Shift",
-      material: "Steel & Glass",
-      year: "2022",
-      featured: false,
-    },
-    {
-      id: 3,
-      title: "Harmonic Resonance",
-      material: "Alabaster",
-      year: "2023",
-      featured: true,
-    },
-    {
-      id: 4,
-      title: "Celestial Form",
-      material: "Bronze",
-      year: "2021",
-      featured: false,
-    },
-    {
-      id: 5,
-      title: "Whispered Silence",
-      material: "Marble & Gold Leaf",
-      year: "2023",
-      featured: true,
-    },
-    {
-      id: 6,
-      title: "Fractured Reality",
-      material: "Mixed Media",
-      year: "2022",
-      featured: false,
-    },
-  ];
-
-  
-
   return (
     <main className="min-h-screen overflow-x-hidden">
       {/* Hero Section */}
-     <Hero/>
+      <Hero />
 
       {/* Gallery Section */}
       {/* <section id="gallery" className="py-32 px-[5%] md:px-[10%] bg-white">
@@ -122,7 +75,7 @@ export default function HomePage() {
           </div>
         </div>
       </section> */}
-<HomepageGallery/>
+      <HomepageGallery />
       {/* About Section */}
       <section id="about" className="py-32  bg-gray-100">
         <div className="container mx-auto px-[5%] md:px-[10%] ">
@@ -134,7 +87,7 @@ export default function HomePage() {
                 fill
                 className="object-cover"
               />
-              <div className="absolute -bottom-8 -right-8 w-48 h-48 bg-amber-500" />
+              <div className="absolute -bottom-8 -right-8 w-48 h-48 bg-museum-gold opacity-35" />
             </div>
 
             <div>
@@ -166,8 +119,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <AboutSection/>
-
+      <AboutSection />
     </main>
   );
 }

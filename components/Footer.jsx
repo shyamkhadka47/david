@@ -17,9 +17,16 @@ const Footer = () => {
         {/* Main Footer Content */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
-          <div>
-            <div className="flex items-center space-x-2 mb-4 ">
-             <Image src={"/logo.png"} width={150} height={75} alt="Logo" sizes="150px"/>
+          <div >
+            <div className=" mb-4 h-[50px]">
+              <Image
+                src={"/logo.png"}
+                width={150}
+                height={75}
+                alt="Logo"
+                sizes="150px"
+                className="w-max h-full object-contain"
+              />
             </div>
             <p className="text-black/70 text-sm mb-4">
               Artisan Museum celebrates the intersection of tradition and
@@ -173,7 +180,14 @@ const Footer = () => {
             © 2025 David Arts. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm text-black/50">
-            <Link href={"https://designtechjoy.com"} target="__blank" className="hover:underline underline-offset-8"> Designed by Design Tech Joy </Link>
+            <Link
+              href={"https://designtechjoy.com"}
+              target="__blank"
+              className="hover:underline underline-offset-8"
+            >
+              {" "}
+              Designed by Design Tech Joy{" "}
+            </Link>
           </div>
         </div>
       </div>

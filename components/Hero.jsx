@@ -45,7 +45,7 @@ const Hero = () => {
             {/* Buttons */}
             <div className="flex flex-wrap gap-4">
               <Link href={"/gallery"} className="bg-museum-gold hover:bg-museum-gold/90 text-museum-dark font-medium uppercase tracking-wide py-3 px-8 rounded-lg transition-colors">
-                View Exhibition
+                View Gallery
               </Link>
 
               <Link href={"/contact"} className="border border-white text-white hover:bg-white hover:text-museum-dark font-medium uppercase tracking-wide py-3 px-8 rounded-lg transition-colors">
