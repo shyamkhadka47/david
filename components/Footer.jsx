@@ -1,4 +1,12 @@
-import { Facebook, Instagram, Twitter, Youtube } from "lucide-react";
+import {
+  Facebook,
+  Instagram,
+  LocateFixedIcon,
+  LocateIcon,
+  MapIcon,
+  Twitter,
+  Youtube,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -15,9 +23,9 @@ const Footer = () => {
         {/* Newsletter Section */}
 
         {/* Main Footer Content */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr] gap-12 mb-12">
           {/* Brand */}
-          <div >
+          <div>
             <div className=" mb-4 h-[50px]">
               <Image
                 src={"/logo.png"}
@@ -79,54 +87,18 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Explore */}
+          {/* VISIT */}
           <div>
-            <h4 className="font-serif text-lg font-semibold mb-4">Visit</h4>
-            <ul className="space-y-2 text-sm text-black/70">
-              <li>
-                <a
-                  href="#"
-                  className="hover:text-museum-gold transition-colors"
-                >
-                  Current Exhibitions
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="hover:text-museum-gold transition-colors"
-                >
-                  Collections
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="hover:text-museum-gold transition-colors"
-                >
-                  Virtual Tours
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="hover:text-museum-gold transition-colors"
-                >
-                  Events & Programs
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="hover:text-museum-gold transition-colors"
-                >
-                  Museum Shop
-                </a>
-              </li>
-            </ul>
+            <h4 className="font-serif text-lg font-semibold mb-4 lg:ml-5">Visit Us</h4>
+
+            <Link href={"https://www.google.com/maps/place/Santa+Fe+Regional+Airport+(SAF)/@35.6095767,-106.0964429,13.82z/data=!4m6!3m5!1s0x87185c170a015af9:0xe3da6899243d7560!8m2!3d35.6182563!4d-106.0845315!16zL20vMDZzamRj?entry=ttu&g_ep=EgoyMDI1MTExMi4wIKXMDSoASAFQAw%3D%3D"} target="__blank" className="flex items-start justify-start gap-2 ">
+              {" "}
+              <LocateFixedIcon />{" "}
+              <span> Near Santa Fe Regional Airport (SAF)</span>
+            </Link>
           </div>
 
-          {/* Support */}
+          {/* CONTACT ME */}
           <div>
             <h4 className="font-serif text-lg font-semibold mb-4">Support</h4>
             <ul className="space-y-2 text-sm text-black/70">
