@@ -3,7 +3,9 @@ import {
   Instagram,
   LocateFixedIcon,
   LocateIcon,
+  MailIcon,
   MapIcon,
+  PhoneCall,
   Twitter,
   Youtube,
 } from "lucide-react";
@@ -23,7 +25,7 @@ const Footer = () => {
         {/* Newsletter Section */}
 
         {/* Main Footer Content */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr] gap-12 mb-12">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-[2fr_.7fr_1fr_1fr] gap-12 mb-12">
           {/* Brand */}
           <div>
             <div className=" mb-4 h-[50px]">
@@ -89,9 +91,17 @@ const Footer = () => {
 
           {/* VISIT */}
           <div>
-            <h4 className="font-serif text-lg font-semibold mb-4 lg:ml-5">Visit Us</h4>
+            <h4 className="font-serif text-lg font-semibold mb-4 lg:ml-5">
+              Visit Us
+            </h4>
 
-            <Link href={"https://www.google.com/maps/place/Santa+Fe+Regional+Airport+(SAF)/@35.6095767,-106.0964429,13.82z/data=!4m6!3m5!1s0x87185c170a015af9:0xe3da6899243d7560!8m2!3d35.6182563!4d-106.0845315!16zL20vMDZzamRj?entry=ttu&g_ep=EgoyMDI1MTExMi4wIKXMDSoASAFQAw%3D%3D"} target="__blank" className="flex items-start justify-start gap-2 ">
+            <Link
+              href={
+                "https://www.google.com/maps/place/Santa+Fe+Regional+Airport+(SAF)/@35.6095767,-106.0964429,13.82z/data=!4m6!3m5!1s0x87185c170a015af9:0xe3da6899243d7560!8m2!3d35.6182563!4d-106.0845315!16zL20vMDZzamRj?entry=ttu&g_ep=EgoyMDI1MTExMi4wIKXMDSoASAFQAw%3D%3D"
+              }
+              target="__blank"
+              className="flex items-start justify-start gap-2 hover:text-museum-gold "
+            >
               {" "}
               <LocateFixedIcon />{" "}
               <span> Near Santa Fe Regional Airport (SAF)</span>
@@ -100,47 +110,39 @@ const Footer = () => {
 
           {/* CONTACT ME */}
           <div>
-            <h4 className="font-serif text-lg font-semibold mb-4">Support</h4>
+            <h4 className="font-serif text-lg font-semibold mb-4">
+              Contact Me
+            </h4>
             <ul className="space-y-2 text-sm text-black/70">
               <li>
                 <a
-                  href="#"
-                  className="hover:text-museum-gold transition-colors"
+                  href="tel:5052308664"
+                  className="hover:text-museum-gold transition-colors flex items-start gap-2"
                 >
-                  Membership
+                  <PhoneCall size={20} /> <span>{`(505) 230 8664`}</span>
                 </a>
               </li>
               <li>
                 <a
-                  href="#"
-                  className="hover:text-museum-gold transition-colors"
+                  href="mailto:something@gmail.com"
+                  className="hover:text-museum-gold transition-colors flex items-start gap-2"
                 >
-                  Donate
+                  <MailIcon size={20} /> <span>something@gmail.com</span>
                 </a>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="hover:text-museum-gold transition-colors"
+                {" "}
+                <Link
+                  href={
+                    "https://www.google.com/maps/place/Santa+Fe+Regional+Airport+(SAF)/@35.6095767,-106.0964429,13.82z/data=!4m6!3m5!1s0x87185c170a015af9:0xe3da6899243d7560!8m2!3d35.6182563!4d-106.0845315!16zL20vMDZzamRj?entry=ttu&g_ep=EgoyMDI1MTExMi4wIKXMDSoASAFQAw%3D%3D"
+                  }
+                  target="__blank"
+                  className="flex items-start justify-start gap-2 hover:text-museum-gold "
                 >
-                  Corporate Partners
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="hover:text-museum-gold transition-colors"
-                >
-                  Volunteer
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="hover:text-museum-gold transition-colors"
-                >
-                  Contact Us
-                </a>
+                  {" "}
+                  <LocateFixedIcon />{" "}
+                  <span> Near Santa Fe Regional Airport (SAF)</span>
+                </Link>
               </li>
             </ul>
           </div>
