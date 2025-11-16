@@ -65,7 +65,7 @@ const Navbar = () => {
             {isOpen ? (
               <X className="h-6 w-6 text-foreground" />
             ) : (
-              <Menu className="h-6 w-6 text-foreground" />
+              <Menu aria-label="Open Mobile Menu" className="h-6 w-6 text-foreground" />
             )}
           </button>
         </div>

@@ -7,27 +7,24 @@ export default function AboutPage() {
   return (
     <main className="min-h-screen bg-white overflow-x-hidden">
       <Banner />
-      <section className="pt-32 pb-16 bg-white">
+      <section className="pt-16 pb-16 bg-white">
         <div className="container mx-auto px-4">
-          <h1
-            className="text-4xl md:text-5xl font-serif mb-8 text-center"
-            data-aos="fade-up"
-          >
-            About Us
+          <h1 className="text-4xl md:text-5xl font-serif mb-8 text-center">
+            About Me
           </h1>
 
           <div className="grid md:grid-cols-2 gap-16 items-center px-[5%] md:px-[10%]">
-            <div className="relative aspect-square" data-aos="fade-right">
+            <div className="relative aspect-square">
               <Image
-                src="/placeholder.svg?height=800&width=800"
+                src="/Hugs and Kisses.png"
                 alt="Studio"
                 fill
                 className="object-cover"
               />
-              <div className="absolute -bottom-8 -right-8 w-48 h-48 bg-amber-500" />
+              <div className="absolute -bottom-8 -right-8 w-48 h-48 bg-museum-gold/65 opacity-95" />
             </div>
 
-            <div data-aos="fade-left">
+            <div>
               <h2 className="text-3xl md:text-4xl font-serif mb-6">
                 Our Artistic Vision
               </h2>

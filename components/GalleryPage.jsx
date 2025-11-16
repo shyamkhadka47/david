@@ -8,72 +8,83 @@ export default function GalleryPage() {
   const sculptures = [
     {
       id: 1,
-      title: "Ethereal Flow",
-      artist: "Elena Markov",
-      material: "Bronze & Marble",
-      year: "2023",
+      title: "Geometric Harmony",
+      artist: "David Stuchicacho",
+      category: "Sculpture",
+      image: "/IMG 3172.png",
+      year: "2024",
     },
     {
       id: 2,
-      title: "Temporal Shift",
-      artist: "Marcus Chen",
-      material: "Steel & Glass",
-      year: "2022",
-    },
-    {
-      id: 3,
-      title: "Harmonic Resonance",
-      artist: "Sophia Reyes",
-      material: "Alabaster",
+      title: "Classical Revival",
+      artist: "David Stuchicacho",
+      category: "Sculpture",
+      image: "/Hugs and Kisses.png",
       year: "2023",
     },
     {
+      id: 3,
+      title: "Minimalist Forms",
+      artist: "David Stuchicacho",
+      category: "Sculpture",
+      image: "/IMG_3592.webp",
+      year: "2024",
+    },
+    {
       id: 4,
-      title: "Celestial Form",
-      artist: "Elena Markov",
-      material: "Bronze",
-      year: "2021",
+      title: "Abstract Narratives",
+      artist: "David Stuchicacho",
+      category: "Sculpture",
+      image: "/Seer.webp",
+      year: "2024",
     },
     {
       id: 5,
-      title: "Whispered Silence",
-      artist: "Marcus Chen",
-      material: "Marble & Gold Leaf",
+      title: "Elegant Figures",
+      artist: "David Stuchicacho",
+      category: "Scupture",
+      image: "/IMG_3600.webp",
       year: "2023",
     },
     {
       id: 6,
-      title: "Fractured Reality",
-      artist: "Sophia Reyes",
-      material: "Mixed Media",
-      year: "2022",
+      title: "Ethereal Dreams",
+      artist: "David Stuchicacho",
+      category: "Sculpture",
+      image: "/mementoVita.webp",
+      year: "2024",
     },
   ];
 
   return (
     <main className="min-h-screen bg-white overflow-x-hidden">
       <Banner />
-      <section className="pt-32 pb-16 bg-white  px-[5%] md:px-[10%]">
-        <div className="container mx-auto px-4">
+      <section className="pt-16 pb-16 bg-white  ">
+        <div className="container mx-auto px-[5%] md:px-[10%]">
           <h1
             className="text-4xl md:text-5xl font-serif mb-8 text-center"
-            data-aos="fade-up"
+           
           >
-            Our Collection
+            About Our Gallery
           </h1>
+          <p className="text-center text-xl font-serif ">
+            Each piece in the my gallery holds a unique message and style to be
+            considered by the viewer, offering a historical reference to the
+            diversity of art within the present time.This is truly a growing
+            tribute to the talent and creativity we find in our mids
+          </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12  px-[5%] md:px-[10%]">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12  my-20">
             {sculptures.map((sculpture, index) => (
               <div
                 key={sculpture.id}
                 className="group cursor-pointer"
-                data-aos="flip-right"
-                data-aos-delay={index * 50}
+               
               >
                 <Link href={`/sculpture/${sculpture.id}`}>
                   <div className="relative aspect-[3/4] overflow-hidden mb-6">
                     <Image
-                      src={`/placeholder.svg?height=900&width=600`}
+                      src={`${sculpture.image}`}
                       alt={sculpture.title}
                       fill
                       className="object-cover transition-transform duration-700 group-hover:scale-110"
@@ -90,7 +101,7 @@ export default function GalleryPage() {
                   </h3>
                   <p className="text-gray-600">{sculpture.artist}</p>
                   <p className="text-gray-500">
-                    {sculpture.material}, {sculpture.year}
+                    {sculpture.category}, {sculpture.year}
                   </p>
                 </Link>
               </div>

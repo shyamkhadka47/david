@@ -30,7 +30,7 @@ export default function Contact() {
                     type="text"
                     id="name"
                     name="name"
-                    className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-amber-500"
+                    className="w-full px-4 py-2 border rounded-lg outline-none focus:ring-2 focus:ring-museum-gold"
                     required
                   />
                 </div>
@@ -42,7 +42,7 @@ export default function Contact() {
                     type="email"
                     id="email"
                     name="email"
-                    className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-amber-500"
+                    className="w-full px-4 py-2  border outline-none rounded-lg focus:ring-2 focus:ring-museum-gold"
                     required
                   />
                 </div>
@@ -54,13 +54,13 @@ export default function Contact() {
                     id="message"
                     name="message"
                     rows={4}
-                    className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-amber-500"
+                    className="w-full px-4 py-2  border outline-none rounded-lg focus:ring-2 focus:ring-museum-gold"
                     required
                   ></textarea>
                 </div>
                 <button
                   type="submit"
-                  className="w-full bg-amber-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg"
+                  className="w-full bg-museum-gold hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg"
                 >
                   Send Message
                 </button>
@@ -70,25 +70,25 @@ export default function Contact() {
               <h2 className="text-2xl font-bold mb-4">Get in Touch</h2>
               <div className="space-y-4">
                 <div className="flex items-start">
-                  <MapPin className="w-6 h-6 text-amber-500 mr-2 mt-1" />
+                  <MapPin className="w-6 h-6 text-muring-museum-gold mr-2 mt-1" />
                   <p>123 Garden Street, Greenville, GR 12345</p>
                 </div>
                 <div className="flex items-center">
-                  <Phone className="w-6 h-6 text-amber-500 mr-2" />
+                  <Phone className="w-6 h-6 text-muring-museum-gold mr-2" />
                   <p>Phone: (555) 123-4567</p>
                 </div>
                 <div className="flex items-center">
-                  <Mail className="w-6 h-6 text-amber-500 mr-2" />
+                  <Mail className="w-6 h-6 text-muring-museum-gold mr-2" />
                   <p>Email: info@greenhorizons.com</p>
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold mb-2">Working Hours</h3>
                   <div className="flex items-center mb-2">
-                    <Clock className="w-6 h-6 text-amber-500 mr-2" />
+                    <Clock className="w-6 h-6 text-muring-museum-gold mr-2" />
                     <span>Monday - Friday: 8:00 AM - 6:00 PM</span>
                   </div>
                   <div className="flex items-center">
-                    <Clock className="w-6 h-6 text-amber-500 mr-2" />
+                    <Clock className="w-6 h-6 text-muring-museum-gold mr-2" />
                     <span>Saturday: 9:00 AM - 4:00 PM</span>
                   </div>
                 </div>
@@ -97,21 +97,21 @@ export default function Contact() {
                   <div className="flex space-x-4">
                     <Link
                       href="#"
-                      className="text-amber-500 hover:text-green-700"
+                      className="text-muring-museum-gold hover:text-green-700"
                     >
                       <Facebook className="w-6 h-6" />
                       <span className="sr-only">Facebook</span>
                     </Link>
                     <Link
                       href="#"
-                      className="text-amber-500 hover:text-green-700"
+                      className="text-muring-museum-gold hover:text-green-700"
                     >
                       <Twitter className="w-6 h-6" />
                       <span className="sr-only">Twitter</span>
                     </Link>
                     <Link
                       href="#"
-                      className="text-amber-500 hover:text-green-700"
+                      className="text-muring-museum-gold hover:text-green-700"
                     >
                       <Instagram className="w-6 h-6" />
                       <span className="sr-only">Instagram</span>

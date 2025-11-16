@@ -7,9 +7,9 @@ export default function Banner({ title, backgroundImage }) {
   const pathname = usePathname();
 
   return (
-    <div className="relative h-[50vh] flex items-center justify-center">
+    <div className="relative h-[70vh] mt-20 flex items-center justify-center">
       <Image
-        src={backgroundImage || "/banner.webp"}
+        src={backgroundImage || "/mementoVita.webp"}
         alt="Page banner background"
         fill
         className="object-cover"

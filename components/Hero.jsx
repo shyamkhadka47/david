@@ -11,7 +11,7 @@ const Hero = () => {
           <Image
             src="/The Universe 11”x11”x6”  Carrara marble.webp"
             alt="Museum Interior"
-           fill
+            fill
             priority
             className="w-full h-full object-cover"
           />
@@ -24,7 +24,6 @@ const Hero = () => {
       {/* Content */}
       <div className="container mx-auto px-[5%] md:px-[10%] relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          
           {/* Left Content */}
           <div className="text-white animate-fade-in-up">
             <p className="text-sm uppercase tracking-widest mb-4 font-sans text-museum-gold">
@@ -38,27 +37,32 @@ const Hero = () => {
             </h1>
 
             <p className="text-lg mb-8 text-white/90 max-w-md font-light">
-              Explore the intersection of traditional techniques and modern innovation
-              in our latest curated collection.
+              Explore the intersection of traditional techniques and modern
+              innovation in our latest curated collection.
             </p>
 
             {/* Buttons */}
             <div className="flex flex-wrap gap-4">
-              <Link href={"/gallery"} className="bg-museum-gold hover:bg-museum-gold/90 text-museum-dark font-medium uppercase tracking-wide py-3 px-8 rounded-lg transition-colors">
+              <Link
+                href={"/gallery"}
+                className="bg-museum-gold hover:bg-museum-gold/90 text-museum-dark font-medium uppercase tracking-wide py-3 px-8 rounded-lg transition-colors"
+              >
                 View Gallery
               </Link>
 
-              <Link href={"/contact"} className="border border-white text-white hover:bg-white hover:text-museum-dark font-medium uppercase tracking-wide py-3 px-8 rounded-lg transition-colors">
+              <Link
+                href={"/contact"}
+                className="border border-white text-white hover:bg-white hover:text-museum-dark font-medium uppercase tracking-wide py-3 px-8 rounded-lg transition-colors"
+              >
                 Contact Us
               </Link>
             </div>
           </div>
 
           {/* Right Info Card */}
-          <div className="lg:ml-auto animate-scale-in">
+          <div className="lg:ml-auto ">
             <div className="bg-background/95 backdrop-blur-sm p-8 max-w-md shadow-2xl rounded-lg">
               <div className="space-y-6">
-
                 {/* Opening Hours */}
                 <div className="flex items-start gap-3 mb-3">
                   <Clock className="h-5 w-5 text-museum-gold mt-1" />
@@ -104,11 +108,9 @@ const Hero = () => {
                 <button className="w-full bg-museum-dark hover:bg-museum-brown text-white font-medium uppercase tracking-wide py-3 px-8 rounded-lg transition-colors">
                   Plan Your Visit
                 </button>
-
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </section>
