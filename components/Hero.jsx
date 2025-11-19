@@ -26,12 +26,8 @@ const Hero = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div className="text-white animate-fade-in-up">
-            <p className="text-sm uppercase tracking-widest mb-4 font-sans text-museum-gold">
-              Featured Exhibition
-            </p>
-
             <h1 className="font-serif text-5xl md:text-7xl font-bold mb-6 leading-tight">
-              Contemporary
+              Universal
               <br />
               Expressions
             </h1>
@@ -79,19 +75,19 @@ const Hero = () => {
 
                 <div className="border-t border-border pt-6">
                   {/* Location */}
-                  <div className="flex items-start gap-3 mb-4">
+                  <Link href={"https://www.google.com/maps/@35.6581023,-105.9945327,45m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI1MTExNi4wIKXMDSoASAFQAw%3D%3D"} className="flex items-start gap-3 mb-4">
                     <MapPin className="h-5 w-5 text-museum-gold mt-1" />
                     <div>
                       <h3 className="font-serif text-xl font-semibold mb-2">
                         Find Us
                       </h3>
                       <p className="text-sm text-muted-foreground">
-                        245 Contemporary Avenue
+                      29 25 Rufina Court Unit F
                         <br />
-                        Arts District, New York
+                        Santa Fe, NM, 87507
                       </p>
                     </div>
-                  </div>
+                  </Link>
 
                   {/* Contact */}
                   <div className="flex items-start gap-3">

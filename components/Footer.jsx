@@ -97,14 +97,14 @@ const Footer = () => {
 
             <Link
               href={
-                "https://www.google.com/maps/place/Santa+Fe+Regional+Airport+(SAF)/@35.6095767,-106.0964429,13.82z/data=!4m6!3m5!1s0x87185c170a015af9:0xe3da6899243d7560!8m2!3d35.6182563!4d-106.0845315!16zL20vMDZzamRj?entry=ttu&g_ep=EgoyMDI1MTExMi4wIKXMDSoASAFQAw%3D%3D"
+                "https://www.google.com/maps/@35.6581023,-105.9945327,45m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI1MTExNi4wIKXMDSoASAFQAw%3D%3D"
               }
               target="__blank"
               className="flex items-start justify-start gap-2 hover:text-museum-gold "
             >
               {" "}
               <LocateFixedIcon />{" "}
-              <span> Near Santa Fe Regional Airport (SAF)</span>
+              <span> 29 25 Rufina Court F Unit Santa Fe, NM, 87507</span>
             </Link>
           </div>
 
@@ -134,14 +134,14 @@ const Footer = () => {
                 {" "}
                 <Link
                   href={
-                    "https://www.google.com/maps/place/Santa+Fe+Regional+Airport+(SAF)/@35.6095767,-106.0964429,13.82z/data=!4m6!3m5!1s0x87185c170a015af9:0xe3da6899243d7560!8m2!3d35.6182563!4d-106.0845315!16zL20vMDZzamRj?entry=ttu&g_ep=EgoyMDI1MTExMi4wIKXMDSoASAFQAw%3D%3D"
+                    "https://www.google.com/maps/@35.6581023,-105.9945327,45m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI1MTExNi4wIKXMDSoASAFQAw%3D%3D"
                   }
                   target="__blank"
                   className="flex items-start justify-start gap-2 hover:text-museum-gold "
                 >
                   {" "}
                   <LocateFixedIcon />{" "}
-                  <span> Near Santa Fe Regional Airport (SAF)</span>
+                  <span> 29 25 Rufina Court Unit F Santa Fe, NM, 87507</span>
                 </Link>
               </li>
             </ul>
