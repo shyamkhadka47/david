@@ -81,7 +81,7 @@ const Hero = () => {
                       <h3 className="font-serif text-xl font-semibold mb-2">
                         Find Us
                       </h3>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-sm text-muted-foreground hover:text-museum-gold">
                       29 25 Rufina Court Unit F
                         <br />
                         Santa Fe, NM, 87507
@@ -93,9 +93,12 @@ const Hero = () => {
                   <div className="flex items-start gap-3">
                     <Phone className="h-5 w-5 text-museum-gold mt-1" />
                     <div>
-                      <p className="text-sm text-muted-foreground">
-                        +1 (555) 123-4567
-                      </p>
+                    <a
+                  href="tel:5052308664"
+                  className="hover:text-museum-gold transition-colors flex items-start gap-2"
+                >
+                 <span>{`(505) 230 8664`}</span>
+                </a>
                     </div>
                   </div>
                 </div>
