@@ -72,9 +72,7 @@ const Footer = () => {
 
           {/* QUICK LINKS */}
           <div>
-            <h4 className="font-serif text-lg font-semibold mb-4">
-              Quick Links
-            </h4>
+            <h4 className=" text-lg font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2 text-sm text-black/70">
               {navLinks?.map((el, i) => (
                 <li key={i}>
@@ -91,9 +89,7 @@ const Footer = () => {
 
           {/* VISIT */}
           <div>
-            <h4 className="font-serif text-lg font-semibold mb-4 lg:ml-5">
-              Visit Us
-            </h4>
+            <h4 className=" text-lg font-semibold mb-4 lg:ml-5">Visit Us</h4>
 
             <Link
               href={
@@ -110,9 +106,7 @@ const Footer = () => {
 
           {/* CONTACT ME */}
           <div>
-            <h4 className="font-serif text-lg font-semibold mb-4">
-              Contact Me
-            </h4>
+            <h4 className=" text-lg font-semibold mb-4">Contact Me</h4>
             <ul className="space-y-2 text-sm text-black/70">
               <li>
                 <a

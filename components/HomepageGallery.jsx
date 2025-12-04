@@ -1,4 +1,3 @@
-
 import Image from "next/image";
 import Link from "next/link";
 
@@ -62,12 +61,13 @@ const HomepageGallery = () => {
           <p className="text-sm uppercase tracking-widest mb-4 text-museum-gold font-sans">
             Our Collections
           </p>
-          <h2 className="font-serif text-4xl md:text-5xl font-bold mb-6">
+          <h2 className=" text-4xl md:text-5xl font-bold mb-6">
             Curated Masterpieces
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Discover an extraordinary selection of artworks spanning centuries and styles,
-            each piece carefully chosen to inspire and provoke thought.
+            Discover an extraordinary selection of artworks spanning centuries
+            and styles, each piece carefully chosen to inspire and provoke
+            thought.
           </p>
         </div>
 
@@ -84,13 +84,13 @@ const HomepageGallery = () => {
               {/* Image */}
               <div className="relative aspect-[4/5] overflow-hidden">
                 <Image
-                fill
+                  fill
                   src={item.image}
                   alt={item.title}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-museum-dark/80 via-museum-dark/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                
+
                 {/* Hover Content */}
                 <div className="absolute inset-0 flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                   <button className="border-2 border-white text-white hover:bg-white hover:text-museum-dark uppercase tracking-wide text-xs py-2 px-4 rounded-md transition-all duration-300">
@@ -104,10 +104,12 @@ const HomepageGallery = () => {
                 <p className="text-xs uppercase tracking-widest text-museum-gold mb-2 font-sans">
                   {item.category}
                 </p>
-                <h3 className="font-serif text-xl font-semibold mb-2 group-hover:text-accent transition-colors">
+                <h3 className=" text-xl font-semibold mb-2 group-hover:text-accent transition-colors">
                   {item.title}
                 </h3>
-                <p className="text-sm text-muted-foreground mb-1">{item.artist}</p>
+                <p className="text-sm text-muted-foreground mb-1">
+                  {item.artist}
+                </p>
                 <p className="text-xs text-muted-foreground">{item.year}</p>
               </div>
             </div>
@@ -116,7 +118,10 @@ const HomepageGallery = () => {
 
         {/* View All Button */}
         <div className="text-center">
-          <Link href={"/gallery"} className="border-2 border-museum-gold bg-museum-gold text-museum-dark hover:bg-museum-gold/90 font-medium uppercase tracking-wide py-3 px-8 rounded-lg transition-all duration-300">
+          <Link
+            href={"/gallery"}
+            className="border-2 border-museum-gold bg-museum-gold text-museum-dark hover:bg-museum-gold/90 font-medium uppercase tracking-wide py-3 px-8 rounded-lg transition-all duration-300"
+          >
             View All Collections
           </Link>
         </div>

@@ -29,7 +29,7 @@ const Navbar = () => {
                 className="w-full h-full object-cover"
               />
               {/* <div className="w-12 h-12 border-2 border-foreground flex items-center justify-center">
-              <span className="font-serif text-2xl font-bold">D</span>
+              <span className=" text-2xl font-bold">D</span>
             </div> */}
             </Link>
           </div>
@@ -65,7 +65,10 @@ const Navbar = () => {
             {isOpen ? (
               <X className="h-6 w-6 text-foreground" />
             ) : (
-              <Menu aria-label="Open Mobile Menu" className="h-6 w-6 text-foreground" />
+              <Menu
+                aria-label="Open Mobile Menu"
+                className="h-6 w-6 text-foreground"
+              />
             )}
           </button>
         </div>

@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import { useEffect } from "react"
-import Link from "next/link"
-import Image from "next/image"
-import { ArrowLeft } from "lucide-react"
-import AOS from "aos"
-import "aos/dist/aos.css"
-import Banner from "./Banner"
+import { useEffect } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { ArrowLeft } from "lucide-react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import Banner from "./Banner";
 
 export default function SculptureDetail({ params }) {
   useEffect(() => {
@@ -14,8 +14,8 @@ export default function SculptureDetail({ params }) {
       duration: 600,
       once: true,
       easing: "ease-out-cubic",
-    })
-  }, [])
+    });
+  }, []);
 
   // Mock data for the sculpture
   const sculpture = {
@@ -33,11 +33,11 @@ export default function SculptureDetail({ params }) {
       "/placeholder.svg?height=800&width=600",
       "/placeholder.svg?height=800&width=600",
     ],
-  }
+  };
 
   return (
     <main className="min-h-screen bg-white overflow-x-hidden">
-        <Banner/>
+      <Banner />
       <div className="container mx-auto px-[5%] md:px-[10%] py-16">
         <Link
           href="/"
@@ -72,23 +72,27 @@ export default function SculptureDetail({ params }) {
           </div>
 
           <div data-aos="fade-left">
-            <h1 className="text-4xl md:text-5xl font-serif mb-4">{sculpture.title}</h1>
+            <h1 className="text-4xl md:text-5xl  mb-4">{sculpture.title}</h1>
             <p className="text-xl text-gray-600 mb-6">by {sculpture.artist}</p>
             <div className="space-y-4 mb-8">
               <p>
                 <span className="font-semibold">Year:</span> {sculpture.year}
               </p>
               <p>
-                <span className="font-semibold">Material:</span> {sculpture.material}
+                <span className="font-semibold">Material:</span>{" "}
+                {sculpture.material}
               </p>
               <p>
-                <span className="font-semibold">Dimensions:</span> {sculpture.dimensions}
+                <span className="font-semibold">Dimensions:</span>{" "}
+                {sculpture.dimensions}
               </p>
               <p>
                 <span className="font-semibold">Price:</span> {sculpture.price}
               </p>
             </div>
-            <p className="text-gray-700 mb-8 leading-relaxed">{sculpture.description}</p>
+            <p className="text-gray-700 mb-8 leading-relaxed">
+              {sculpture.description}
+            </p>
             <a
               href="#"
               className="inline-block bg-amber-500 text-black px-10 py-4 text-lg font-semibold hover:bg-amber-400 transition-colors duration-300"
@@ -99,6 +103,5 @@ export default function SculptureDetail({ params }) {
         </div>
       </div>
     </main>
-  )
+  );
 }
-

@@ -198,7 +198,6 @@ export default function GalleryPage() {
       image: "/MementoVita90_x23_x20_Limestone.webp",
       year: "2024",
     },
-   
   ];
 
   return (
@@ -206,10 +205,10 @@ export default function GalleryPage() {
       <Banner />
       <section className="pt-16 pb-16 bg-white  ">
         <div className="container mx-auto px-[5%] md:px-[10%]">
-          <h1 className="text-4xl md:text-5xl font-serif mb-8 text-center">
+          <h1 className="text-4xl md:text-5xl  mb-8 text-center">
             About Our Gallery
           </h1>
-          <p className="text-center text-xl font-serif ">
+          <p className="text-center text-xl  ">
             Each piece in the my gallery holds a unique message and style to be
             considered by the viewer, offering a historical reference to the
             diversity of art within the present time.This is truly a growing
@@ -233,7 +232,7 @@ export default function GalleryPage() {
                     </span>
                   </div>
                 </div>
-                <h3 className="text-2xl font-serif mb-2">{sculpture.title}</h3>
+                <h3 className="text-2xl  mb-2">{sculpture.title}</h3>
                 <p className="text-gray-600">{sculpture.artist}</p>
                 <p className="text-gray-500">
                   {sculpture.category}, {sculpture.year}

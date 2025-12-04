@@ -26,7 +26,7 @@ const Hero = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div className="text-white animate-fade-in-up">
-            <h1 className="font-serif text-5xl md:text-7xl font-bold mb-6 leading-tight">
+            <h1 className=" text-5xl md:text-7xl font-bold mb-6 leading-tight">
               Universal
               <br />
               Expressions
@@ -63,7 +63,7 @@ const Hero = () => {
                 <div className="flex items-start gap-3 mb-3">
                   <Clock className="h-5 w-5 text-museum-gold mt-1" />
                   <div>
-                    <h3 className="font-serif text-xl font-semibold mb-2">
+                    <h3 className=" text-xl font-semibold mb-2">
                       Opening Hours
                     </h3>
                     <div className="space-y-1 text-sm text-muted-foreground">
@@ -75,14 +75,17 @@ const Hero = () => {
 
                 <div className="border-t border-border pt-6">
                   {/* Location */}
-                  <Link href={"https://www.google.com/maps/@35.6581023,-105.9945327,45m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI1MTExNi4wIKXMDSoASAFQAw%3D%3D"} className="flex items-start gap-3 mb-4">
+                  <Link
+                    href={
+                      "https://www.google.com/maps/@35.6581023,-105.9945327,45m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI1MTExNi4wIKXMDSoASAFQAw%3D%3D"
+                    }
+                    className="flex items-start gap-3 mb-4"
+                  >
                     <MapPin className="h-5 w-5 text-museum-gold mt-1" />
                     <div>
-                      <h3 className="font-serif text-xl font-semibold mb-2">
-                        Find Us
-                      </h3>
+                      <h3 className=" text-xl font-semibold mb-2">Find Us</h3>
                       <p className="text-sm text-muted-foreground hover:text-museum-gold">
-                      29 25 Rufina Court Unit F
+                        29 25 Rufina Court Unit F
                         <br />
                         Santa Fe, NM, 87507
                       </p>
@@ -93,12 +96,12 @@ const Hero = () => {
                   <div className="flex items-start gap-3">
                     <Phone className="h-5 w-5 text-museum-gold mt-1" />
                     <div>
-                    <a
-                  href="tel:5052308664"
-                  className="hover:text-museum-gold transition-colors flex items-start gap-2"
-                >
-                 <span>{`(505) 230 8664`}</span>
-                </a>
+                      <a
+                        href="tel:5052308664"
+                        className="hover:text-museum-gold transition-colors flex items-start gap-2"
+                      >
+                        <span>{`(505) 230 8664`}</span>
+                      </a>
                     </div>
                   </div>
                 </div>

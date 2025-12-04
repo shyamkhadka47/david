@@ -17,7 +17,7 @@ export default function HomePage() {
       {/* <section id="gallery" className="py-32 px-[5%] md:px-[10%] bg-white">
         <div className="container mx-auto px-4">
           <div data-aos="fade-up">
-            <h2 className="text-4xl md:text-5xl font-serif mb-4 text-center">
+            <h2 className="text-4xl md:text-5xl  mb-4 text-center">
               Featured Sculptures
             </h2>
             <p className="text-gray-600 text-center max-w-xl mx-auto mb-16">
@@ -54,7 +54,7 @@ export default function HomePage() {
                       </span>
                     </div>
                   </div>
-                  <h3 className="text-2xl font-serif mb-2">
+                  <h3 className="text-2xl  mb-2">
                     {sculpture.title}
                   </h3>
                   <p className="text-gray-600">
@@ -91,7 +91,7 @@ export default function HomePage() {
             </div>
 
             <div>
-              <h2 className="text-4xl md:text-5xl font-serif mb-8">
+              <h2 className="text-4xl md:text-5xl  mb-8">
                 Our Artistic Vision
               </h2>
               <p className="text-lg mb-6 leading-relaxed">
