@@ -9,7 +9,7 @@ export default function AboutPage() {
       <Banner />
       <section className="pt-16 pb-16 bg-white">
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl  mb-8 text-center">hello Me</h1>
+          <h1 className="text-4xl md:text-5xl  mb-8 text-center">About Me</h1>
 
           <div className="grid md:grid-cols-2 gap-16 items-center px-[5%] md:px-[10%]">
             <div className="relative aspect-square">
