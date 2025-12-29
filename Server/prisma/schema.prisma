@@ -1,0 +1,97 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url = env("DATABASE_URL")
+}
+
+model AboutUs {
+  id         String   @id @default(uuid())
+  title      String
+  content    String
+  aboutImage String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @default(now()) @updatedAt
+}
+
+model Blog {
+  id            String   @id @default(uuid())
+  title         String
+  content       String
+  featuredImage String
+  slug          String   @unique
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @default(now()) @updatedAt
+}
+
+model Gallery {
+  id           String   @id @default(uuid())
+  description  String
+  caption      String
+  galleryImage String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @default(now()) @updatedAt
+}
+
+model Meta {
+  id          String   @id @default(uuid())
+  page        String    @unique
+  title       String
+  description String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now()) @updatedAt
+}
+
+model SiteSetting {
+  id                            String   @id @default(uuid())
+  businessname                  String
+  phonenumber                   String?
+  email                         String?
+  fblink                        String?
+  twitterlink                   String?
+  linkedlink                  String?
+  youtubelink                   String?
+  shortdescriptionaboutbusiness String
+  businesslogo                  String
+  createdAt                     DateTime @default(now())
+  updatedAt                     DateTime @default(now()) @updatedAt
+}
+
+model Slider {
+  id          String   @id @default(uuid())
+  title       String
+  slogan      String
+  description String
+  sliderImage String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now()) @updatedAt
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+}
+
+model Video {
+  id          String   @id @default(uuid())
+  title       String
+  description String
+  videolink   String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now()) @updatedAt
+}
+
+model BannerVideo{
+  id      String @id @default(uuid())
+  title   String 
+  page    String  @unique
+  description   String
+  videoFile   String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @default(now()) @updatedAt
+}
