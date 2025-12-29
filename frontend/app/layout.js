@@ -3,6 +3,7 @@ import "./globals.css";
 import NextTopLoader from "nextjs-toploader";
  
 import {Open_Sans  } from "next/font/google";
+import PageWrapper from "@/components/PageWrapper";
 
 const openSans= Open_Sans({
   subsets:['latin'],
@@ -20,8 +21,10 @@ export default function RootLayout({ children }) {
       <body
         className={`${openSans.className} antialiased`}
       >
+        <PageWrapper>
         <NextTopLoader height={4} showSpinner={false} color={"#f49e0b"} />
         {children}
+        </PageWrapper>
       </body>
     </html>
   );
