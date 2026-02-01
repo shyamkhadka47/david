@@ -104,7 +104,7 @@ const Aboutus = () => {
       const res = await axiosInstance.put('/updateaboutus', formdata);
 
       if (res.status == 200) {
-        toast.success('Biography Updated SuccessFully');
+        toast.success('About Us Updated SuccessFully');
       }
     } catch (error) {
       if (isAxiosError(error)) {
@@ -132,14 +132,14 @@ const Aboutus = () => {
   return (
     <>
       <div className="mx-auto max-w-270">
-        <Breadcrumb pageName="Biography" />
+        <Breadcrumb pageName="About Us" />
 
         <div className="grid grid-cols-5 gap-8">
           <div className="col-span-5 xl:col-span-3">
             <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
               <div className="border-b border-stroke py-4 px-7 dark:border-strokedark">
                 <h3 className="font-medium text-black dark:text-white">
-                  Biography
+                  About Us
                 </h3>
               </div>
               <div className="p-7">
@@ -211,7 +211,7 @@ const Aboutus = () => {
             <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
               <div className="border-b border-stroke py-4 px-7 dark:border-strokedark">
                 <h3 className="font-medium text-black dark:text-white">
-                  Featured Biography Image
+                  Featured About Us Image
                 </h3>
               </div>
               <div className="p-7">

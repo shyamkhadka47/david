@@ -31,6 +31,7 @@ const Gallery = () => {
       const res = await axiosInstance.get('/getallgallery', {
         params: { page: pageNumber, limit },
       });
+
       if (res.status == 200) {
         setData(res.data.data);
         setTotal(res.data.total);
@@ -163,7 +164,7 @@ const Gallery = () => {
                           </td>
                           <td className="p-4 py-5 border border-r max-w-[450px]">
                             <p className="block font-semibold text-sm text-black">
-                              {el.category.name}
+                              {el.Category.name}
                             </p>
                           </td>
 

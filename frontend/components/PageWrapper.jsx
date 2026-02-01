@@ -1,14 +1,18 @@
-"use client";
-
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import { getsitesettings } from "@/hooks/data";
 
-export default function PageWrapper({ children }) {
+export const dynamic= "force-static"
+
+export default async function PageWrapper({ children }) {
+  const sitesettingres= await getsitesettings()
+  const sitesettingresprops= sitesettingres && sitesettingres?.success==true && sitesettingres?.data
+
   return (
     <>
-      <Navbar />
+      <Navbar logo={sitesettingresprops.businesslogo}/>
       {children}
-      <Footer />
+      <Footer  data={sitesettingresprops}/>
     </>
   );
 }

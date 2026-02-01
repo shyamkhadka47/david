@@ -17,9 +17,10 @@ const ViewCategoryImage = () => {
   const fetchGalleryByCategory = async (pageNumber = 1) => {
     try {
       const res = await axiosInstance.get(
-        `/getcategorybyid/${id}?page=${pageNumber}&limit=${limit}`,
+        `/getcategorygallerybyid/${id}?page=${pageNumber}&limit=${limit}`,
         {},
       );
+
       if (res.status === 200 && res.data.success) {
         setGalleryImages(res.data.data);
         setTotal(res.data.total || res.data.data.length); // fallback if `total` isn't provided

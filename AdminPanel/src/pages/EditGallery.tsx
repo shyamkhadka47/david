@@ -80,12 +80,13 @@ const EditGallery = () => {
   const getsinglegallery = async (id: any) => {
     try {
       const res = await axiosInstance.get(`/getsinglegallery/${id}`);
+ 
       if (res.status === 200) {
         const imagefile = await downloadImage(res.data.data.galleryImage);
         setData({
           description: res.data.data.description,
           caption: res.data.data.caption,
-          category: res.data.data.category?.id || '',
+          category: res.data.data.categoryId || '',
         });
         setImgSrc(imagefile);
       }
@@ -102,6 +103,8 @@ const EditGallery = () => {
       getsinglegallery(id);
     }
   }, [id]);
+
+
 
   return (
     <div className="bg-white w-full h-[80vh] shadow-md flex flex-col gap-3">

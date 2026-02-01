@@ -13,6 +13,7 @@ const Slider = () => {
   const [id, setId] = React.useState('');
   const [show, setShow] = React.useState(false);
   const [loading, setloading] = React.useState(false);
+  const [flag, setFlag] = React.useState(false);
 
   const getsliders = async () => {
     try {
@@ -21,24 +22,26 @@ const Slider = () => {
 
       if (res.status == 200) {
         setData(res.data.data);
-        return setloading(false);
+        setloading(false);
       }
     } catch (error) {
       if (isAxiosError(error)) {
         setloading(false);
+        setData([]);
         return toast.error(error.response?.data.message);
       }
     }
   };
   React.useEffect(() => {
     getsliders();
-  }, []);
+  }, [flag]);
 
   const column = [
     { title: 'SN' },
     { title: 'Title' },
-    { title: 'Slogan' },
+
     { title: 'Description' },
+    { title: 'Page' },
     { title: 'Image' },
   ];
 
@@ -49,8 +52,8 @@ const Slider = () => {
         setShow(false);
         setId('');
         toast.success(res.data.message);
-
-        getsliders();
+        setFlag(!flag);
+        // getsliders();
       }
     } catch (error) {
       if (isAxiosError(error)) {
@@ -76,19 +79,19 @@ const Slider = () => {
             <button
               className={`${
                 color == 'dark' && 'hover:bg-white hover:text-black'
-              } bg-green-900 text-white w-[200px] font-bold py-4 hover:bg-transparent hover:border-[2px] hover:border-green-600 hover:text-black  absolute right-[0] top-5 `}
+              } bg-green-900 text-sm text-white w-[200px] font-bold py-4 hover:bg-transparent hover:border-[2px] hover:border-green-600 hover:text-black  absolute right-[0] top-5 `}
             >
               Add New Slider
             </button>
           </Link>
-          <div className="mt-[20px]">
+          <div className="mt-[-8px]">
             <div className="max-w-[1020px] mx-auto">
               <div className="w-full flex justify-between items-center mb-5 mt-1 pl-3">
                 <div>
                   <h3
-                    className={`${
-                      color == 'dark' && 'text-white'
-                    } "text-[25px] font-semibold text-black"`}
+                    className={`text-sm font-semibold ${
+                      color === 'dark' ? 'text-white' : 'text-black'
+                    }`}
                   >
                     View All Sliders
                   </h3>
@@ -117,7 +120,7 @@ const Slider = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {data &&
+                    {data && data?.length > 0 ? (
                       data?.map((el: any, ind: number) => (
                         <tr
                           className="hover:bg-slate-50 border-b border-slate-200"
@@ -130,24 +133,25 @@ const Slider = () => {
                           </td>
                           <td className="p-4 py-5 border border-r">
                             <p className=" font-semibold text-sm text-black flex items-center justify-center gap-4">
-                              {el.title}
+                              {el.title.slice(0, 15)}...
+                            </p>
+                          </td>
+
+                          <td className="p-4 py-5 border border-r">
+                            <p className=" font-semibold text-sm text-black flex items-center justify-center gap-4">
+                              {el.description.slice(0, 20)}...
                             </p>
                           </td>
                           <td className="p-4 py-5 border border-r">
                             <p className=" font-semibold text-sm text-black flex items-center justify-center gap-4">
-                              {el.slogan}
-                            </p>
-                          </td>
-                          <td className="p-4 py-5 border border-r">
-                            <p className=" font-semibold text-sm text-black flex items-center justify-center gap-4">
-                              {el.description}
+                              {el.page}
                             </p>
                           </td>
                           <td className="p-4 py-5 border border-r">
                             <div className="w-[50px] h-[50px] font-semibold text-sm text-black flex items-center justify-center gap-4">
                               <img
                                 src={`${import.meta.env.VITE_BACKEND_URI}/${
-                                  el.sliderimage
+                                  el.sliderImage
                                 }`}
                                 className="w-[100%] h-[100%] object-cover"
                                 alt=""
@@ -181,13 +185,19 @@ const Slider = () => {
                               </button>
                             )} */}
                         </tr>
-                      ))}
+                      ))
+                    ) : (
+                      <tr>
+                        <td
+                          colSpan={column.length + 1}
+                          className="text-center p-4"
+                        >
+                          No Sliders found
+                        </td>
+                      </tr>
+                    )}
                   </tbody>
                 </table>
-
-                <div className="mt-4 text-center ">
-                  {data?.length < 1 && !loading && 'No Sliders found'}
-                </div>
               </div>
             </div>
           </div>

@@ -13,15 +13,15 @@ import {
   testimonialupload,
 } from "../multerStorage/multer-config.js";
 
-// import sliderController from "../controllers/sliderController.js";
+import sliderController from "../controllers/sliderController.js";
 // import userqueryController from "../controllers/userqueryController.js";
 // import serviceController from "../controllers/serviceController.js";
 // import testimonialController from "../controllers/testimonialController.js";
-// import galleryController from "../controllers/galleryController.js";
+import galleryController from "../controllers/galleryController.js";
 import aboutController from "../controllers/aboutController.js";
 import metacontroller from "../controllers/metaController.js";
 import videoController from "../controllers/videoController.js";
-// import categoryController from "../controllers/categoryController.js";
+import categoryController from "../controllers/categoryController.js";
 import BannerVideoController from "../controllers/bannerVideoController.js";
 import StorytellerController from "../controllers/StorytellerController.js";
 
@@ -62,22 +62,23 @@ Router.get("/getsinglemetadata/:id", metacontroller.getsinglemetadata);
 Router.put("/updatemetadata/:id", protect, metacontroller.updatemetadata);
 Router.delete("/deletemetadata/:id", metacontroller.deletemetadata);
 
-// // SLIDER API
-// Router.post(
-//   "/addnewslider",
-//   protect,
-//   sliderupload.single("image"),
-//   sliderController.addSlider
-// );
-// Router.get("/getallslider", sliderController.getSlider);
-// Router.get("/getsingleslider/:id", protect, sliderController.singleSlider);
-// Router.delete("/deleteslider/:id", protect, sliderController.deleteSlider);
-// Router.put(
-//   "/updateslider/:id",
-//   protect,
-//   sliderupload.single("image"),
-//   sliderController.updateSlider
-// );
+// SLIDER API
+Router.post(
+  "/addnewslider",
+  protect,
+  sliderupload.single("image"),
+  sliderController.addSlider
+);
+Router.get("/getallslider", sliderController.getSlider);
+Router.get("/getsingleslider/:id", protect, sliderController.singleSlider);
+Router.get("/getsliderbypage/:page", sliderController.singleSliderbypage)
+Router.delete("/deleteslider/:id", protect, sliderController.deleteSlider);
+Router.put(
+  "/updateslider/:id",
+  protect,
+  sliderupload.single("image"),
+  sliderController.updateSlider
+);
 
 // // USER QUERY API
 // Router.post("/adduserquery", userqueryController.addquery);
@@ -144,35 +145,36 @@ Router.delete("/deletemetadata/:id", metacontroller.deletemetadata);
 //   testimonialController.deleteTestimonial
 // );
 
-// // GALLERY CATEGORY
-// Router.post('/addnewcategory',protect,   categoryController.createCategory);
-// Router.get('/getallcategories',     categoryController.getAllCategories);
-// Router.get('/getcategorybyid/:id',  categoryController.getCategoryById);
-// Router.put('/updatecategory/:id',protect,  categoryController.updateCategory);
-// Router.delete('/deletecategory/:id', protect, categoryController.deleteCategory);
+// GALLERY CATEGORY
+Router.post('/addnewcategory',protect,   categoryController.createCategory);
+Router.get('/getallcategories',     categoryController.getAllCategories);
+Router.get('/getcategorybyid/:id',  categoryController.getCategoryById);
+Router.get('/getcategorygallerybyid/:id', categoryController.getGalleriesByCategoriesId)
+Router.put('/updatecategory/:id',protect,  categoryController.updateCategory);
+Router.delete('/deletecategory/:id', protect, categoryController.deleteCategory);
 
 
-// // GALLERY API
-// Router.post(
-//   "/addgallery",
-//   protect,
-//   galleryupload.single("image"),
-//   galleryController.addNewGallery
-// );
-// Router.get("/getallgallery", galleryController.getAllGallery);
-// Router.get("/getrandomgallery", galleryController.getRandomGallery)
-// Router.get(
-//   "/getsinglegallery/:id",
-//   protect,
-//   galleryController.getSingleGallery
-// );
-// Router.put(
-//   "/updategallery/:id",
-//   protect,
-//   galleryupload.single("image"),
-//   galleryController.updateGallery
-// );
-// Router.delete("/deletegallery/:id", protect, galleryController.deleteGallery);
+// GALLERY API
+Router.post(
+  "/addgallery",
+  protect,
+  galleryupload.single("image"),
+  galleryController.addNewGallery
+);
+Router.get("/getallgallery", galleryController.getAllGallery);
+Router.get("/getrandomgallery", galleryController.getRandomGallery)
+Router.get(
+  "/getsinglegallery/:id",
+  protect,
+  galleryController.getSingleGallery
+);
+Router.put(
+  "/updategallery/:id",
+  protect,
+  galleryupload.single("image"),
+  galleryController.updateGallery
+);
+Router.delete("/deletegallery/:id", protect, galleryController.deleteGallery);
 
 // ABOUT US API
 Router.post(

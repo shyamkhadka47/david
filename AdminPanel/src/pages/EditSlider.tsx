@@ -10,16 +10,35 @@ import { downloadImage } from '../hooks/convertImageToFile';
 const EditSlider = () => {
   const navigate = useNavigate();
   const { id } = useParams();
+  const [mainpage, setMainpage] = React.useState('');
+  const [servicepage, setServicepage] = React.useState('');
+  const [page, setPage] = React.useState('');
   const [data, setData] = React.useState({
     title: '',
-    slogan: '',
+
     description: '',
   });
+  const [serviceslug, setServiceSlugs] = React.useState([]);
+
   const [imgsrc, setImgSrc] = React.useState<File | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setData((prev) => ({ ...prev, [name]: value }));
+  };
+
+
+  const getserviceslugs = async () => {
+    try {
+      const res = await axiosInstance.get('/getallservices');
+      if (res.status == 200) {
+        setServiceSlugs(() => res?.data?.data.map((el: any) => el.slug));
+      }
+    } catch (error) {
+      if (isAxiosError(error)) {
+        return toast.error(error?.response?.data?.message);
+      }
+    }
   };
 
   const handleImage = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -33,6 +52,18 @@ const EditSlider = () => {
     }
   };
 
+  const handlemainpageChange = (e: any) => {
+    setMainpage(e.target.value);
+    setPage(e.target.value);
+    setServicepage('');
+  };
+
+  const handleServicePageChange = (e: any) => {
+    setServicepage(e.target.value);
+    setPage(e.target.value);
+    setMainpage('');
+  };
+
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     if (!imgsrc) {
@@ -40,8 +71,9 @@ const EditSlider = () => {
     }
     try {
       const formdata = new FormData();
+      formdata.append('page', page);
       formdata.append('title', data.title);
-      formdata.append('slogan', data.slogan);
+
       formdata.append('description', data.description);
       formdata.append('image', imgsrc);
       const res = await axiosInstance.put(`/updateslider/${id}`, formdata);
@@ -57,16 +89,18 @@ const EditSlider = () => {
   };
 
   //   Get Data
-  const getsingleslider = async (id:any) => {
+  const getsingleslider = async (id: any) => {
     try {
       const res = await axiosInstance.get(`/getsingleslider/${id}`);
       if (res.status == 200) {
-        const imagefile = await downloadImage(res?.data?.data?.sliderimage);
+        const imagefile = await downloadImage(res?.data?.data?.sliderImage);
         setData(() => ({
+        
           title: res?.data?.data?.title,
-          slogan: res?.data?.data?.slogan,
+         
           description: res?.data?.data.description,
         }));
+        setPage(()=>(res?.data?.data?.page))
         setImgSrc(imagefile);
       }
     } catch (error) {
@@ -78,15 +112,55 @@ const EditSlider = () => {
 
   React.useEffect(() => {
     getsingleslider(id);
+    getserviceslugs()
   }, [id]);
 
   return (
-    <div className="bg-white w-full h-[80vh] shadow-md flex flex-col  gap-3">
+    <div className="bg-white w-full h-auto shadow-md flex flex-col  gap-3">
       <h1 className="text-center mt-5 p-5 font-bold text-black-0 text-[20px] underline underline-offset-8 ">
         Edit Slider
       </h1>
       <div className="flex justify-between w-[80%]">
         <div className="pl-20 flex flex-col gap-5">
+        <div className="flex gap-3">
+            <select
+              name="page"
+              onChange={(e) => handlemainpageChange(e)}
+              value={mainpage}
+              className="rounded-md w-max  h-[60px] p-5 text-black bg-[#f1f3f9]"
+            >
+              <option>Choose Main Page</option>
+              <option value="home">Home</option>
+              <option value="about">About</option>
+              <option value="services">Services</option>
+              <option value="servicearea">Service-Area</option>
+              <option value="gallery">Gallery</option>
+              <option value="Contact">Contact</option>
+            </select>
+            <select
+              name="page"
+              value={servicepage}
+              onChange={(e) => handleServicePageChange(e)}
+              className="rounded-md w-max  h-[60px] p-5 text-black bg-[#f1f3f9]"
+            >
+              <option>Choose Service Page</option>
+              {serviceslug.length > 0 &&
+                serviceslug?.map((el, i) => (
+                  <option key={i} value={el}>
+                    {el}
+                  </option>
+                ))}
+            </select>
+          </div>
+
+          <input
+            value={page}
+            
+            type="text"
+           placeholder='Current Selected Page'
+            className=" rounded-md w-[500px]  h-[60px] p-5 text-black bg-[#f1f3f9] outline-none"
+            disabled
+          />
           <input
             value={data.title}
             onChange={(e) => handleChange(e)}
@@ -95,14 +169,7 @@ const EditSlider = () => {
             className=" rounded-md w-[500px]  h-[60px] p-5 text-black bg-[#f1f3f9] outline-none"
             placeholder="Enter Title"
           />
-          <input
-            value={data.slogan}
-            onChange={(e) => handleChange(e)}
-            type="text"
-            name="slogan"
-            className=" rounded-md w-[500px]  h-[60px] p-5 text-black bg-[#f1f3f9] outline-none"
-            placeholder="Enter Slogan"
-          />
+        
           <textarea
             value={data.description}
             onChange={(e: any) => handleChange(e)}
@@ -148,11 +215,11 @@ const EditSlider = () => {
           </label>
         </div>
       </div>
-      <div className="flex items-center justify-center gap-4 mt-5">
+      <div className="flex items-center justify-center gap-4 my-5">
         <input
           type="submit"
           onClick={() => {
-            setData({ title: '', slogan: '', description: '' });
+            setData({  title: '',description: '' });
             setImgSrc(null);
             navigate('/slider');
           }}

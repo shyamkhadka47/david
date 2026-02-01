@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url = env("DATABASE_URL")
+  url      = env("DATABASE_URL")
 }
 
 model AboutUs {
@@ -26,18 +26,29 @@ model Blog {
   updatedAt     DateTime @default(now()) @updatedAt
 }
 
+model Category {
+  id        String    @id @default(uuid())
+  name      String    @unique
+  galleries Gallery[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @default(now()) @updatedAt
+}
+
 model Gallery {
-  id           String   @id @default(uuid())
+  id           String @id @default(uuid())
   description  String
   caption      String
   galleryImage String
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @default(now()) @updatedAt
+
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @default(now()) @updatedAt
+  Category   Category @relation(fields: [categoryId], references: [id])
+  categoryId String
 }
 
 model Meta {
   id          String   @id @default(uuid())
-  page        String    @unique
+  page        String   @unique
   title       String
   description String
   createdAt   DateTime @default(now())
@@ -47,11 +58,14 @@ model Meta {
 model SiteSetting {
   id                            String   @id @default(uuid())
   businessname                  String
-  phonenumber                   String?
+  phonenumber                   String
+  phonenumber2                  String?
+  address                       String?
+  mapurl                        String?
   email                         String?
   fblink                        String?
   twitterlink                   String?
-  linkedlink                  String?
+  linkedlink                    String?
   youtubelink                   String?
   shortdescriptionaboutbusiness String
   businesslogo                  String
@@ -60,9 +74,10 @@ model SiteSetting {
 }
 
 model Slider {
-  id          String   @id @default(uuid())
-  title       String
-  slogan      String
+  id    String @id @default(uuid())
+  page  String
+  title String
+
   description String
   sliderImage String
   createdAt   DateTime @default(now())
@@ -86,12 +101,12 @@ model Video {
   updatedAt   DateTime @default(now()) @updatedAt
 }
 
-model BannerVideo{
-  id      String @id @default(uuid())
-  title   String 
-  page    String  @unique
-  description   String
+model BannerVideo {
+  id          String   @id @default(uuid())
+  title       String
+  page        String   @unique
+  description String
   videoFile   String
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @default(now()) @updatedAt
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now()) @updatedAt
 }

@@ -152,7 +152,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                 <NavLink
                   to="/metadata"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                    pathname.includes('settings') &&
+                    pathname.includes('meta') &&
                     'bg-graydark dark:bg-meta-4'
                   }`}
                 >
@@ -166,7 +166,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                 <NavLink
                   to="/story-tellers"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                    pathname.includes('slider') && 'bg-graydark dark:bg-meta-4'
+                    pathname.includes('story-tellers') && 'bg-graydark dark:bg-meta-4'
                   }`}
                 >
                   <FaBlog size={20} />
@@ -175,7 +175,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
               </li>
 
               {/* Sliders  */}
-              {/* <li>
+              <li>
                 <NavLink
                   to="/slider"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
@@ -185,13 +185,13 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   <BsSliders size={20} />
                   Sliders
                 </NavLink>
-              </li> */}
+              </li>
               {/* BANNER VIDEOS */}
               <li>
                 <NavLink
                   to="/banner-videos"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                    pathname.includes('slider') && 'bg-graydark dark:bg-meta-4'
+                    pathname.includes('banner') && 'bg-graydark dark:bg-meta-4'
                   }`}
                 >
                   <BsSliders size={20} />
@@ -203,7 +203,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                 <NavLink
                   to="/videos"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                    pathname.includes('slider') && 'bg-graydark dark:bg-meta-4'
+                    pathname.includes('videos') && 'bg-graydark dark:bg-meta-4'
                   }`}
                 >
                   <MdVideoSettings size={20} />
@@ -247,7 +247,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   }`}
                 >
                   <BsPeopleFill />
-                  Biography
+                  About Us
                 </NavLink>
               </li>
               {/* Customer Testimonial */}

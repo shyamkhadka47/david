@@ -9,10 +9,20 @@ class siteSettingController {
       body: JSON.stringify(tag ? { tag } : { path }),
     });
   }
+  static async deleteImage(filename) {
+    if (!filename) {
+      return;
+    }
+    try {
+      fs.promises.unlink(`public/uploads/${filename}`);
+    } catch (error) {
+      console.log("Error Deleting File", filename, errro);
+    }
+  }
   static getSiteSetting = async (req, res) => {
     try {
       const findSiteSetting = await prisma.siteSetting.findFirst();
-    
+
       if (!findSiteSetting) {
         return res
           .status(400)
@@ -30,6 +40,9 @@ class siteSettingController {
     const {
       businessname,
       phonenumber,
+      phonenumber2,
+      address,
+      mapurl,
       email,
       fblink,
       twitterlink,
@@ -37,49 +50,34 @@ class siteSettingController {
       youtubelink,
       shortdescriptionaboutbusiness,
     } = req.body;
-
-    const file = req?.file;
-    if (!req.file || file.size >= 1 * 1024 * 1024) {
-      await fs.promises.unlink(`public/uploads/${file.filename}`);
-      return res.status(400).json({
-        success: false,
-        message: "Please Upload Image Less Than 1 Mb",
-      });
-    }
-
+    const filename = req?.file?.filename;
     try {
-      // Ensure file is uploaded before proceeding
-      if (!file || file.originalname === "undefined") {
-        await fs.promises.unlink(`public/uploads/${file.filename}`);
-        return res.status(400).json({
-          success: false,
-          message: "Please Select Image Less than 1MB",
-        });
+      if (!req.file) {
+        return res
+          .status(400)
+          .json({ success: false, message: "Image Required Less Than 1MB" });
       }
-
-      if (!businessname || !shortdescriptionaboutbusiness) {
-        if (file.filename) {
-          try {
-            await fs.promises.unlink(`public/uploads/${file.filename}`);
-          } catch (error) {
-            console.log(error);
-          }
+      if (!businessname || !phonenumber || !shortdescriptionaboutbusiness) {
+        if (filename) {
+          await siteSettingController.deleteImage(filename);
         }
-        return res.status(400).json({
-          success: false,
-          message: "Business Name and Description Field Required",
-        });
+        return res
+          .status(400)
+          .json({ success: false, message: "All Field Required" });
       }
+      // if (isNaN(phonenumber) || isNaN(phonenumber2)) {
+      //   if (filename) {
+      //     await siteSettingController.deleteImage(filename);
+      //   }
+      //   return res
+      //     .status(400)
+      //     .json({ success: false, message: "Phone Number should be numeric" });
+      // }
 
       const findSiteSetting = await prisma.siteSetting.findMany();
-
       if (findSiteSetting.length > 0) {
-        if (file.filename) {
-          try {
-            await fs.promises.unlink(`public/uploads/${file.filename}`);
-          } catch (error) {
-            console.log(error);
-          }
+        if (filename) {
+          await siteSettingController.deleteImage(filename);
         }
         return res
           .status(400)
@@ -90,28 +88,26 @@ class siteSettingController {
         data: {
           businessname,
           phonenumber,
+          phonenumber2,
+          address,
+          mapurl,
           email,
           fblink,
           twitterlink,
           linkedlink,
           youtubelink,
           shortdescriptionaboutbusiness,
-          businesslogo: file.filename,
+          businesslogo: filename,
         },
       });
 
-      await siteSettingController.revalidate("sitesettings");
+      await siteSettingController.revalidate("siteSetting");
       return res
         .status(200)
         .json({ success: true, message: "Site Setting Created Successfully" });
     } catch (error) {
-      console.log(error);
-      if (file.filename) {
-        try {
-          await fs.promises.unlink(`public/uploads/${file.filename}`);
-        } catch (error) {
-          console.log(error);
-        }
+      if (filename) {
+        await siteSettingController.deleteImage(filename);
       }
       return res.status(500).json({
         success: false,
@@ -123,8 +119,11 @@ class siteSettingController {
   static editSiteSetting = async (req, res) => {
     const {
       businessname,
-      businessLogo,
+
       phonenumber,
+      phonenumber2,
+      address,
+      mapurl,
       email,
       fblink,
       twitterlink,
@@ -132,26 +131,32 @@ class siteSettingController {
       youtubelink,
       shortdescriptionaboutbusiness,
     } = req.body;
-    const { filename } = req?.file;
 
+    const { filename } = req.file;
     try {
       const findSiteSetting = await prisma.siteSetting.findFirst();
       if (!findSiteSetting) {
-        try {
-          await fs.promises.unlink(`public/uploads/${filename}`);
-        } catch (error) {
-          console.log(error);
-        }
+        await siteSettingController.deleteImage(filename);
         return res
           .status(400)
           .json({ success: false, message: "No Site Setting Found" });
       }
-
+      // if (isNaN(phonenumber) || isNaN(phonenumber2)) {
+      //   if (filename) {
+      //     await siteSettingController.deleteImage(filename);
+      //   }
+      //   return res
+      //     .status(400)
+      //     .json({ success: false, message: "Phone Number should be numeric" });
+      // }
       const savesitesetting = await prisma.siteSetting.update({
         where: { id: findSiteSetting.id },
         data: {
           businessname,
           phonenumber,
+          phonenumber2,
+          address,
+          mapurl,
           email,
           fblink,
           twitterlink,
@@ -162,38 +167,19 @@ class siteSettingController {
         },
       });
 
-      if (!savesitesetting) {
-        if (filename) {
-          try {
-            await fs.promises.unlink(`public/uploads/${filename}`);
-          } catch (error) {
-            console.log(error);
-          }
-        }
-
-        return res
-          .status(400)
-          .json({ success: false, message: "Cannot Update Site Setting" });
-      }
-
       if (filename) {
-        fs.unlink(`public/uploads/${findSiteSetting.businesslogo}`, (err) => {
-          if (err) {
-            console.log(err);
-          }
-        });
+        await siteSettingController.deleteImage(findSiteSetting.businesslogo);
       }
-      await siteSettingController.revalidate("sitesettings");
+      await siteSettingController.revalidate("siteSetting");
       return res
         .status(200)
         .json({ success: true, message: "Site Setting Updated SuccessFully" });
     } catch (error) {
+      console.log(error.stack);
+      console.log(error.message);
+      console.log(error.code);
       if (filename) {
-        try {
-          await fs.promises.unlink(`public/uploads/${filename}`);
-        } catch (error) {
-          console.log(error.message);
-        }
+        await siteSettingController.deleteImage(filename);
       }
       return res.status(500).json({
         success: false,

@@ -1,129 +1,188 @@
-// import categoryModel from "../models/categorymodel.js";
-// import galleryModel from "../models/gallerymodel.js";
+import prisma from "../config/config.js";
+class categoryController {
+  // Create new category
+  static createCategory = async (req, res) => {
+    const { name } = req.body;
 
-// class categoryController {
-//   // Create new category
-//   static createCategory = async (req, res) => {
-//     const { name } = req.body;
+    if (!name) {
+      return res
+        .status(400)
+        .json({ success: false, message: "Name is required" });
+    }
 
-//     if (!name) {
-//       return res.status(400).json({ success: false, message: "Name is required" });
-//     }
+    try {
+      const category = await prisma.category.create({ data: { name } });
+      return res
+        .status(200)
+        .json({ success: true, message: "Category Added Successfully" });
+    } catch (error) {
+      console.error("Create Category Error:", error);
+      if (error.code == "P2002") {
+        return res
+          .status(400)
+          .json({ success: false, message: "Another Category already exists " });
+      }
+      return res.status(500).json({
+        success: false,
+        message: "Internal Server Error. Please try again.",
+      });
+    }
+  };
 
-//     try {
-//       const existing = await categoryModel.findOne({ name });
-//       if (existing) {
-//         return res.status(400).json({ success: false, message: "Category already exists" });
-//       }
+  // Get all categories
+  static getAllCategories = async (req, res) => {
+    try {
+      const categories = await prisma.category.findMany({
+        orderBy: { createdAt: "desc" },
+      });
+      return res.status(200).json({ success: true, data: categories });
+    } catch (error) {
+      console.error("Get All Categories Error:", error);
+      return res.status(500).json({
+        success: false,
+        message: "Internal Server Error. Please try again.",
+      });
+    }
+  };
 
-//       const category = await categoryModel.create({ name });
-//       return res.status(200).json({ success: true, message:"Category Added Successfully"});
-//     } catch (error) {
-//       console.error("Create Category Error:", error);
-//       return res.status(500).json({ success: false, message: "Internal Server Error. Please try again." });
-//     }
-//   };
+  // Get a category by ID
+  static getCategoryById = async (req, res) => {
+    const { id } = req.params;
+    // const page = parseInt(req.query.page) || 1;
+    // const limit = parseInt(req.query.limit) || 20;
 
-//   // Get all categories
-//   static getAllCategories = async (req, res) => {
-//     try {
-//       const categories = await categoryModel.find().sort({createdAt:-1});
-//       return res.status(200).json({ success: true, data: categories });
-//     } catch (error) {
-//       console.error("Get All Categories Error:", error);
-//       return res.status(500).json({ success: false, message: "Internal Server Error. Please try again." });
-//     }
-//   };
+    try {
+      const category = await prisma.category.findUnique({ where: { id } });
 
-//   // Get a category by ID
-//   static getCategoryById = async (req, res) => {
-//     const { id } = req.params;
-//     const page = parseInt(req.query.page) || 1;
-//     const limit = parseInt(req.query.limit) || 20;
+      if (!category) {
+        return res
+          .status(404)
+          .json({ success: false, message: "Category not found" });
+      }
 
-//     try {
-//       const category = await categoryModel.findById(id).populate("galleries");
+      return res.status(200).json({
+        success: true,
+        data: category,
+      });
+    } catch (error) {
+      console.error("Get Category By ID Error:", error);
+      return res.status(500).json({
+        success: false,
+        message: "Internal Server Error. Please try again.",
+      });
+    }
+  };
 
-//       if (!category) {
-//         return res.status(404).json({ success: false, message: "Category not found" });
-//       }
+  //   Get Category wise Gallery
+  static getGalleriesByCategoriesId = async (req, res) => {
+    const { id } = req.params;
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+    const skip = (page - 1) * limit;
+    if (!id) {
+      return res.status(400).json({ success: false, message: "Invalid Id " });
+    }
+    try {
+      const findgalleries = await prisma.gallery.findMany({
+        where: { categoryId: id },
+        skip,
+        take: limit,
+        orderBy: { createdAt: "desc" },
+      });
+      const total = await prisma.gallery.count({
+        where: { categoryId: id },
+      });
 
-//       const total = category.galleries.length;
-//       const startIndex = (page - 1) * limit;
-//       const endIndex = startIndex + limit;
+      return res.status(200).json({
+        success: true,
+        data: findgalleries,
+        total,
+        page,
+        totalPages: Math.ceil(total / limit),
+      });
+    } catch (error) {
+      return res.status(500).json({
+        success: false,
+        message: "Internal Server Error Please Try Again Later",
+      });
+    }
+  };
 
-//       // Paginate galleries manually
-//       const paginatedGalleries = category.galleries.slice(startIndex, endIndex);
+  // Delete a category
+  static deleteCategory = async (req, res) => {
+    const { id } = req.params;
+    try {
+      const category = await prisma.category.findUnique({ where: { id } });
+      if (!category) {
+        return res
+          .status(404)
+          .json({ success: false, message: "Category not found" });
+      }
 
-//       return res.status(200).json({
-//         success: true,
-//         data: paginatedGalleries,
-//         total,
-//         page,
-//         totalPages: Math.ceil(total / limit),
-//       });
-//     } catch (error) {
-//       console.error("Get Category By ID Error:", error);
-//       return res.status(500).json({ success: false, message: "Internal Server Error. Please try again." });
-//     }
-//   };
+      const galleries = await prisma.gallery.findMany({
+        where: { categoryId: id },
+      });
 
-//   // Delete a category
-//   static deleteCategory = async (req, res) => {
-//     const { id } = req.params;
-//     try {
-//       const category = await categoryModel.findById(id);
-//       if (!category) {
-//         return res.status(404).json({ success: false, message: "Category not found" });
-//       }
+      if (galleries.length > 0) {
+        return res.status(400).json({
+          success: false,
+          message:
+            "Cannot delete category with associated galleries. Delete them first.",
+        });
+      }
 
-//       const galleries = await galleryModel.find({ category: id });
+      await prisma.category.delete({ where: { id } });
+      return res
+        .status(200)
+        .json({ success: true, message: "Category deleted successfully" });
+    } catch (error) {
+      console.error("Delete Category Error:", error);
+      return res.status(500).json({
+        success: false,
+        message: "Internal Server Error. Please try again.",
+      });
+    }
+  };
 
-//       if (galleries.length > 0) {
-//         return res.status(400).json({
-//           success: false,
-//           message: "Cannot delete category with associated galleries. Delete them first.",
-//         });
-//       }
+  // Update a category
+  static updateCategory = async (req, res) => {
+    const { id } = req.params;
+    const { name } = req.body;
 
-//       await categoryModel.findByIdAndDelete(id);
-//       return res.status(200).json({ success: true, message: "Category deleted successfully" });
-//     } catch (error) {
-//       console.error("Delete Category Error:", error);
-//       return res.status(500).json({ success: false, message: "Internal Server Error. Please try again." });
-//     }
-//   };
+    if (!name) {
+      return res
+        .status(400)
+        .json({ success: false, message: "name is required" });
+    }
 
-//   // Update a category
-//   static updateCategory = async (req, res) => {
-//     const { id } = req.params;
-//     const { name } = req.body;
+    try {
+      await prisma.category.update({ where: { id }, data: { name } });
 
-//     if (!name) {
-//       return res.status(400).json({ success: false, message: "name is required" });
-//     }
+      return res.status(200).json({
+        success: true,
 
-//     try {
-//       const category = await categoryModel.findById(id);
-//       if (!category) {
-//         return res.status(404).json({ success: false, message: "Category not found" });
-//       }
+        message: "Category updated successfully",
+      });
+    } catch (error) {
+      console.error("Update Category Error:", error);
+      if (error.code == "P2002") {
+        return res.status(400).json({
+          success: false,
+          message: "Another category with this name already exists",
+        });
+      }
+      if (error.code == "P2025") {
+        return res.status(400).json({
+          success: false,
+          message: "Category Name doesn't exist",
+        });
+      }
+      return res.status(500).json({
+        success: false,
+        message: "Internal Server Error. Please try again.",
+      });
+    }
+  };
+}
 
-//       // Check if new name already exists (and is not the current category)
-//       const duplicate = await categoryModel.findOne({ name });
-//       if (duplicate && duplicate.id.toString() !== id) {
-//         return res.status(400).json({ success: false, message: "Another category with this name already exists" });
-//       }
-
-//       category.name = name;
-//       await category.save();
-
-//       return res.status(200).json({ success: true, data: category, message: "Category updated successfully" });
-//     } catch (error) {
-//       console.error("Update Category Error:", error);
-//       return res.status(500).json({ success: false, message: "Internal Server Error. Please try again." });
-//     }
-//   };
-// }
-
-// export default categoryController;
+export default categoryController;

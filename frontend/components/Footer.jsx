@@ -12,7 +12,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 
-const Footer = () => {
+const Footer = ({data}) => {
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
@@ -30,7 +30,7 @@ const Footer = () => {
           <div>
             <div className=" mb-4 h-[50px]">
               <Image
-                src={"/logo.png"}
+                src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/${data.businesslogo}`}
                 width={150}
                 height={75}
                 alt="Logo"
@@ -39,30 +39,33 @@ const Footer = () => {
               />
             </div>
             <p className="text-black/70 text-sm mb-4">
-              Artisan Museum celebrates the intersection of tradition and
-              innovation in contemporary art.
+              {data.shortdescriptionaboutbusiness}
             </p>
             <div className="flex gap-3">
               <a
-                href="#"
+                href={data.fblink}
+                 target="__blank"
                 className="text-black hover:text-museum-gold transition-colors"
               >
                 <Facebook className="h-5 w-5" />
               </a>
               <a
-                href="#"
+                href={data.linkedlink}
+                target="__blank"
                 className="text-black hover:text-museum-gold transition-colors"
               >
                 <Instagram className="h-5 w-5" />
               </a>
               <a
-                href="#"
+                href={data.twitterlink}
+                 target="__blank"
                 className="text-black hover:text-museum-gold transition-colors"
               >
                 <Twitter className="h-5 w-5" />
               </a>
               <a
-                href="#"
+                href={data.youtubelink}
+                 target="__blank"
                 className="text-black hover:text-museum-gold transition-colors"
               >
                 <Youtube className="h-5 w-5" />
@@ -93,14 +96,14 @@ const Footer = () => {
 
             <Link
               href={
-                "https://www.google.com/maps/@35.6581023,-105.9945327,45m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI1MTExNi4wIKXMDSoASAFQAw%3D%3D"
+                data.mapurl
               }
               target="__blank"
               className="flex items-start justify-start gap-2 hover:text-museum-gold "
             >
               {" "}
               <LocateFixedIcon />{" "}
-              <span> 29 25 Rufina Court F Unit Santa Fe, NM, 87507</span>
+              <span>{data.address}</span>
             </Link>
           </div>
 
@@ -113,29 +116,29 @@ const Footer = () => {
                   href="tel:5052308664"
                   className="hover:text-museum-gold transition-colors flex items-start gap-2"
                 >
-                  <PhoneCall size={20} /> <span>{`(505) 230 8664`}</span>
+                  <PhoneCall size={20} /> <span>{data.phonenumber || data.phonenumber}</span>
                 </a>
               </li>
               <li>
                 <a
-                  href="mailto:something@gmail.com"
+                  href={`mailto:${data.email}`}
                   className="hover:text-museum-gold transition-colors flex items-start gap-2"
                 >
-                  <MailIcon size={20} /> <span>something@gmail.com</span>
+                  <MailIcon size={20} /> <span>{data.email}</span>
                 </a>
               </li>
               <li>
                 {" "}
                 <Link
                   href={
-                    "https://www.google.com/maps/@35.6581023,-105.9945327,45m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI1MTExNi4wIKXMDSoASAFQAw%3D%3D"
+                    data.mapurl
                   }
                   target="__blank"
                   className="flex items-start justify-start gap-2 hover:text-museum-gold "
                 >
                   {" "}
                   <LocateFixedIcon />{" "}
-                  <span> 29 25 Rufina Court Unit F Santa Fe, NM, 87507</span>
+                  <span>{data.address}</span>
                 </Link>
               </li>
             </ul>

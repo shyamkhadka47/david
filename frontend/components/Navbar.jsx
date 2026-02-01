@@ -1,9 +1,10 @@
+"use client"
 import { useState } from "react";
 import { Menu, X, ShoppingBag, Search } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
-const Navbar = () => {
+const Navbar = ({logo}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
@@ -21,7 +22,7 @@ const Navbar = () => {
           <div className="h-[50px]">
             <Link href="/">
               <Image
-                src="/logo.png"
+                src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/${logo}`}
                 alt="Logo of David"
                 width={150}
                 height={75}
