@@ -39,6 +39,9 @@ import AddNewMetaData from './pages/AddNewMetaData';
 import EditMetaData from './pages/EditMetaData';
 import ViewCategoryImage from './pages/ViewCategoryImage';
 import PublicLayout from './components/PublicLayout';
+import AboveFooterContent from './pages/AboveFooterContent';
+import AddPageContent from './pages/AddPageContent';
+import EditPageContent from './pages/EditPageContent';
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -112,6 +115,9 @@ function App() {
               </>
             }
           />
+          <Route path="/contents" element={<AboveFooterContent />} />
+          <Route path="/add-page-content" element={<AddPageContent />} />
+          <Route path="/edit-page-content/:id" element={<EditPageContent />} />
           <Route
             path="/settings"
             element={
@@ -120,6 +126,8 @@ function App() {
                 <Settings />
               </>
             }
+
+            
           />
         </Route>
       </Route>

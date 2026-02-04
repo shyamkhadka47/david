@@ -115,22 +115,22 @@ const EditGallery = () => {
       <div className="flex justify-between w-[80%]">
         <div className="pl-20 flex flex-col gap-5">
           <input
-            value={data.description}
-            onChange={handleChange}
-            type="text"
-            name="description"
-            className="rounded-md w-[500px] h-[60px] p-5 text-black bg-[#f1f3f9] outline-none"
-            placeholder="Enter Title"
-          />
-
-          <input
             value={data.caption}
             onChange={handleChange}
             type="text"
             name="caption"
             className="rounded-md w-[500px] h-[60px] p-5 text-black bg-[#f1f3f9] outline-none"
-            placeholder="Enter Caption"
+            placeholder="Enter Title Of Image"
           />
+          <input
+            value={data.description}
+            onChange={handleChange}
+            type="text"
+            name="description"
+            className="rounded-md w-[500px] h-[60px] p-5 text-black bg-[#f1f3f9] outline-none"
+            placeholder="Enter Description"
+          />
+
 
           <select
             name="category"

@@ -2,6 +2,13 @@ import fs from "fs";
 import prisma from "../config/config.js";
 
 class galleryController {
+  static async revalidate(tag, path) {
+    const res = await fetch(`${process.env.FRONTEND_URL}/api/revalidate`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(tag ? { tag } : { path }),
+    });
+  }
   // Centralized image deletion
   static deleteImage = async (filename) => {
     try {
@@ -45,6 +52,7 @@ class galleryController {
           categoryId,
         },
       });
+      await galleryController.revalidate("homegallery")
 
       return res
         .status(200)
@@ -59,20 +67,20 @@ class galleryController {
     }
   };
 
-  static getRandomGallery = async (req, res) => {
-    const limit = parseInt(req.query.limit) || 10;
-    try {
-      const findallgallery = await gallerymodal.aggregate([
-        { $sample: { size: limit } },
-      ]);
-      return res.status(200).json({ success: true, data: findallgallery });
-    } catch (error) {
-      return res.status(500).json({
-        success: false,
-        message: "Internal Server Error Please Try Again",
-      });
-    }
-  };
+  // static getRandomGallery = async (req, res) => {
+  //   const limit = parseInt(req.query.limit) || 10;
+  //   try {
+  //     const findallgallery = await gallerymodal.aggregate([
+  //       { $sample: { size: limit } },
+  //     ]);
+  //     return res.status(200).json({ success: true, data: findallgallery });
+  //   } catch (error) {
+  //     return res.status(500).json({
+  //       success: false,
+  //       message: "Internal Server Error Please Try Again",
+  //     });
+  //   }
+  // };
 
   static getAllGallery = async (req, res) => {
     try {
@@ -190,6 +198,7 @@ class galleryController {
       if (filename && findgallery.galleryImage) {
         await galleryController.deleteImage(findgallery.galleryImage);
       }
+      await galleryController.revalidate("homegallery")
       return res
         .status(200)
         .json({ success: true, message: "Gallery updated Successfully" });
@@ -222,7 +231,7 @@ class galleryController {
 
       // finally delete file
       await galleryController.deleteImage(findgallery.galleryImage);
-
+      await galleryController.revalidate("homegallery")
       return res
         .status(200)
         .json({ success: true, message: "Gallery Deleted Successfully" });

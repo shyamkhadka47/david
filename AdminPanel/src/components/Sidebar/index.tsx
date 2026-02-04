@@ -14,7 +14,7 @@ import { IoPulseOutline } from 'react-icons/io5';
 import { RxDashboard } from 'react-icons/rx';
 import { AiOutlineSetting } from 'react-icons/ai';
 
-import { TfiGallery } from 'react-icons/tfi';
+import { TfiGallery, TfiWrite } from 'react-icons/tfi';
 import { TbLogout2 } from 'react-icons/tb';
 
 interface SidebarProps {
@@ -152,8 +152,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                 <NavLink
                   to="/metadata"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                    pathname.includes('meta') &&
-                    'bg-graydark dark:bg-meta-4'
+                    pathname.includes('meta') && 'bg-graydark dark:bg-meta-4'
                   }`}
                 >
                   <IoPulseOutline size={20} />
@@ -166,7 +165,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                 <NavLink
                   to="/story-tellers"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                    pathname.includes('story-tellers') && 'bg-graydark dark:bg-meta-4'
+                    pathname.includes('story-tellers') &&
+                    'bg-graydark dark:bg-meta-4'
                   }`}
                 >
                   <FaBlog size={20} />
@@ -186,12 +186,25 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   Sliders
                 </NavLink>
               </li>
+              <li>
+                <NavLink
+                  to="/contents"
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 text-sm font-semibold text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
+                    pathname.includes('contents') &&
+                    'bg-graydark dark:bg-meta-4'
+                  }`}
+                >
+                  <TfiWrite />
+                  Page Content
+                </NavLink>
+              </li>
+
               {/* BANNER VIDEOS */}
               <li>
                 <NavLink
                   to="/banner-videos"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                    pathname.includes('banner') && 'bg-graydark dark:bg-meta-4'
+                    pathname == '/banner-videos' && 'bg-graydark dark:bg-meta-4'
                   }`}
                 >
                   <BsSliders size={20} />
@@ -203,7 +216,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                 <NavLink
                   to="/videos"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                    pathname.includes('videos') && 'bg-graydark dark:bg-meta-4'
+                    pathname == '/videos' && 'bg-graydark dark:bg-meta-4'
                   }`}
                 >
                   <MdVideoSettings size={20} />
@@ -221,7 +234,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                 >
                   {/* <GiPlaylist size={20} /> */}
                   <MdPlaylistAdd size={20} />
-                  Visual History Category
+                  Gallery Category
                 </NavLink>
               </li>
 
@@ -234,7 +247,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   }`}
                 >
                   <TfiGallery size={20} />
-                  Visual History
+                  Gallery
                 </NavLink>
               </li>
 

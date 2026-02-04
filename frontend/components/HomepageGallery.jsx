@@ -1,61 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const collections = [
-  {
-    id: 1,
-    title: "Geometric Harmony",
-    artist: "Marina Delacroix",
-    category: "Sculpture",
-    image: "/IMG 3172.png",
-    year: "2024",
-  },
-  {
-    id: 2,
-    title: "Classical Revival",
-    artist: "Historical Collection",
-    category: "Sculpture",
-    image: "/Hugs and Kisses.png",
-    year: "2023",
-  },
-  {
-    id: 3,
-    title: "Minimalist Forms",
-    artist: "Chen Wei",
-    category: "Sculpture",
-    image: "/IMG_3592.webp",
-    year: "2024",
-  },
-  {
-    id: 4,
-    title: "Abstract Narratives",
-    artist: "Sofia Torres",
-    category: "Sculpture",
-    image: "/Seer.webp",
-    year: "2024",
-  },
-  {
-    id: 5,
-    title: "Elegant Figures",
-    artist: "Alexandre Rousseau",
-    category: "Scupture",
-    image: "/IMG_3600.webp",
-    year: "2023",
-  },
-  {
-    id: 6,
-    title: "Ethereal Dreams",
-    artist: "David Stuchicacho",
-    category: "Sculpture",
-    image: "/mementoVita.webp",
-    year: "2024",
-  },
-];
 
-const HomepageGallery = () => {
+
+const HomepageGallery = ({gallery}) => {
   return (
     <section id="collections" className="py-24 bg-white">
-      <div className="container mx-auto px-[5%] md:px-[10%]">
+   {gallery && gallery.length > 0 &&   <div className="container mx-auto px-[5%] md:px-[10%]">
         {/* Section Header */}
         <div className="text-center mb-16 animate-fade-in-up">
           <p className="text-sm uppercase tracking-widest mb-4 text-museum-gold font-sans">
@@ -73,7 +24,7 @@ const HomepageGallery = () => {
 
         {/* Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {collections.map((item, index) => (
+          {gallery.map((item, index) => (
             <div
               key={item.id}
               className="group overflow-hidden border-0 bg-card hover:shadow-2xl transition-all duration-500"
@@ -85,8 +36,8 @@ const HomepageGallery = () => {
               <div className="relative aspect-[4/5] overflow-hidden">
                 <Image
                   fill
-                  src={item.image}
-                  alt={item.title}
+                  src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/${item.galleryImage}`}
+                  alt={item.caption}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-museum-dark/80 via-museum-dark/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -102,13 +53,13 @@ const HomepageGallery = () => {
               {/* Content */}
               <div className="p-6">
                 <p className="text-xs uppercase tracking-widest text-museum-gold mb-2 font-sans">
-                  {item.category}
+                  {item.Category.name}
                 </p>
                 <h3 className=" text-xl font-semibold mb-2 group-hover:text-accent transition-colors">
-                  {item.title}
+                  {item.caption}
                 </h3>
                 <p className="text-sm text-muted-foreground mb-1">
-                  {item.artist}
+                  {item.description}
                 </p>
                 <p className="text-xs text-muted-foreground">{item.year}</p>
               </div>
@@ -125,7 +76,7 @@ const HomepageGallery = () => {
             View All Collections
           </Link>
         </div>
-      </div>
+      </div>}
     </section>
   );
 };

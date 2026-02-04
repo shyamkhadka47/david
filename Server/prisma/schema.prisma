@@ -8,12 +8,13 @@ datasource db {
 }
 
 model AboutUs {
-  id         String   @id @default(uuid())
-  title      String
-  content    String
-  aboutImage String
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @default(now()) @updatedAt
+  id           String   @id @default(uuid())
+  title        String
+  content      String
+  shortContent String?
+  aboutImages  String[]
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @default(now()) @updatedAt
 }
 
 model Blog {
@@ -44,6 +45,14 @@ model Gallery {
   updatedAt  DateTime @default(now()) @updatedAt
   Category   Category @relation(fields: [categoryId], references: [id])
   categoryId String
+}
+
+model PageContentAboveFooter {
+  id        String   @id @default(uuid())
+  page      String   @unique
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
 }
 
 model Meta {

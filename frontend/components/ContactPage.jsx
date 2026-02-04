@@ -1,4 +1,4 @@
-import Banner from "@/components/Banner";
+"use client";
 import {
   MapPin,
   Phone,
@@ -9,11 +9,24 @@ import {
   Instagram,
 } from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function Contact() {
+  const [data, setData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    setData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <>
-      <Banner />
       <main className="py-12 md:py-16">
         <div className="container mx-auto px-[5%] md:px-[10%]">
           <h1 className="text-3xl md:text-4xl font-bold mb-8 text-center">
@@ -21,7 +34,7 @@ export default function Contact() {
           </h1>
           <div className="flex flex-col lg:flex-row gap-8">
             <div className="lg:w-1/2">
-              <form className="space-y-4">
+              <form className="space-y-4" onSubmit={handleSubmit}>
                 <div>
                   <label htmlFor="name" className="block mb-2 font-medium">
                     Name
@@ -30,6 +43,8 @@ export default function Contact() {
                     type="text"
                     id="name"
                     name="name"
+                    value={data.name}
+                    onChange={(e) => handleChange(e)}
                     className="w-full px-4 py-2 border rounded-lg outline-none focus:ring-2 focus:ring-museum-gold"
                     required
                   />
@@ -42,6 +57,8 @@ export default function Contact() {
                     type="email"
                     id="email"
                     name="email"
+                    value={data.email}
+                    onChange={(e) => handleChange(e)}
                     className="w-full px-4 py-2  border outline-none rounded-lg focus:ring-2 focus:ring-museum-gold"
                     required
                   />
@@ -54,6 +71,8 @@ export default function Contact() {
                     id="message"
                     name="message"
                     rows={4}
+                    value={data.message}
+                    onChange={(e) => handleChange(e)}
                     className="w-full px-4 py-2  border outline-none rounded-lg focus:ring-2 focus:ring-museum-gold"
                     required
                   ></textarea>

@@ -10,28 +10,51 @@ class aboutController {
     });
   }
   static async deleteImage(filename) {
-    if (!filename) {
+    if (!Array.isArray(filename) || filename.length == 0) {
       return;
     }
     try {
-      await fs.promises.unlink(`public/about/${filename}`);
+      for (let index = 0; index < filename.length; index++) {
+        await fs.promises.unlink(`public/about/${filename[index]}`);
+      }
     } catch (error) {
       return console.log(error);
     }
   }
 
   static addAboutUs = async (req, res) => {
-    const { title, content } = req.body;
-    const filename = req.file?.filename;
+    const { title, content, shortContent } = req.body;
+    const files =
+      req?.files && req?.files.length > 0
+        ? req.files.map((el) => el.filename)
+        : [];
 
-    if (!req.file || req.file.size > 1 * 1024 * 1024) {
+    if (files.length == 0) {
       return res
         .status(400)
         .json({ success: false, message: "Image Required Less Than 1 MB" });
     }
-    if (!title || !content) {
-      if (filename) {
-        await aboutController.deleteImage(filename);
+    if (req?.files.length > 0) {
+      for (let index = 0; index < req.files.length; index++) {
+        if (req?.files[index].size > 1 * 1024 * 1024) {
+          await aboutController.deleteImage(files);
+          return res.status(400).json({
+            success: false,
+            message: `${req.files[index].originalname} is more than 1 MB`,
+          });
+        }
+      }
+    }
+
+    if (req.fileValidationError) {
+      await aboutController.deleteImage(files);
+      return res
+        .status(400)
+        .json({ success: false, message: req.fileValidationError });
+    }
+    if (!title || !content || !shortContent) {
+      if (files) {
+        await aboutController.deleteImage(files);
       }
       return res
         .status(400)
@@ -39,9 +62,9 @@ class aboutController {
     }
     try {
       const findabout = await prisma.aboutUs.findMany();
-      console.log(findabout);
+
       if (findabout.length > 0) {
-        await aboutController.deleteImage(filename);
+        await aboutController.deleteImage(files);
         return res
           .status(400)
           .json({ success: false, message: "About Us Exist" });
@@ -50,10 +73,11 @@ class aboutController {
         data: {
           title,
           content,
-          aboutImage: filename,
+          shortContent,
+          aboutImages: files,
         },
       });
-      await aboutController.deleteImage(findabout.aboutImage);
+
       await aboutController.revalidate("", "/biography");
       return res
         .status(200)
@@ -61,8 +85,8 @@ class aboutController {
     } catch (error) {
       console.error("Error in adding About Us:", error);
 
-      if (filename) {
-        await aboutController.deleteImage(filename);
+      if (files) {
+        await aboutController.deleteImage(files);
       }
       return res.status(500).json({
         success: false,
@@ -88,18 +112,43 @@ class aboutController {
     }
   };
   static updateAboutUs = async (req, res) => {
-    const { title, content } = req.body;
-    const filename = req.file?.filename;
+    const { title, shortContent, content } = req.body;
+    const files =
+      req?.files && req?.files.length > 0
+        ? req?.files.map((el) => el.filename)
+        : [];
+
     try {
-      if (!filename) {
+      if (files.length == 0) {
         return res.status(400).json({
           success: false,
           message: "Please Upload Image Less Than 1Mb",
         });
       }
-      if (!title || !content) {
-        if (filename) {
-          await aboutController.deleteImage(filename);
+      if (req.fileValidationError) {
+        await aboutController.deleteImage(files)
+        return res
+          .status(400)
+          .json({ success: false, message: req.fileValidationError });
+      }
+
+      if (req?.files.length > 0) {
+        for (let index = 0; index < req.files.length; index++) {
+          if (req?.files[index].size > 1 * 1024 * 1024) {
+            await aboutController.deleteImage(files);
+            return res
+              .status(400)
+              .json({
+                success: false,
+                message: `${req.files[index].originalname} Exceeds 1 MB Please Upload Less than 1 MB`,
+              });
+          }
+        }
+      }
+
+      if (!title || !content || !shortContent) {
+        if (files) {
+          await aboutController.deleteImage(files);
         }
         return res
           .status(400)
@@ -107,8 +156,8 @@ class aboutController {
       }
       const findabout = await prisma.aboutUs.findFirst();
       if (!findabout) {
-        if (filename) {
-          await aboutController.deleteImage(filename);
+        if (files) {
+          await aboutController.deleteImage(files);
         }
         return res
           .status(400)
@@ -120,22 +169,19 @@ class aboutController {
         data: {
           title,
           content,
-          aboutImage: filename,
+          shortContent,
+          aboutImages: files,
         },
       });
 
-      await aboutController.deleteImage(findabout.aboutImage);
+      await aboutController.deleteImage(findabout.aboutImages);
       await aboutController.revalidate("", "/biography");
       return res
         .status(200)
         .json({ success: true, message: "About Us Updated Successfully" });
     } catch (error) {
-      if (filename) {
-        try {
-          await fs.promises.unlink(`public/about/${filename}`);
-        } catch (error) {
-          console.log(error);
-        }
+      if (files) {
+        await aboutController.deleteImage(files);
       }
       return res.status(500).json({
         success: false,

@@ -54,26 +54,36 @@ const aboutStorage = multer.diskStorage({
 });
 const bannerStorage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'public/bannervideos');
+    cb(null, "public/bannervideos");
   },
   filename: function (req, file, cb) {
-   
     cb(null, `${Date.now()}-${file.originalname}`);
-  }
+  },
 });
 
-const StorytellerStorage= multer.diskStorage({
+const StorytellerStorage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "public/storytellers");
   },
   filename: function (req, file, cb) {
     cb(null, `${Date.now()}-${file.originalname}`);
   },
-})
+});
 
-export const storytellerupload= multer({storage:StorytellerStorage})
+const fileFilter = (req, file, cb) => {
+  const allowFileTypes = ["image/jpeg", "image/png", "image/webp"];
+  if (allowFileTypes.includes(file.mimetype)) {
+    cb(null, true);
+  } else {
+    req.fileValidationError =
+      "Only .jpg, .jpeg, .png, and .webp formats are allowed!";
+    cb(null, false);
+  }
+};
 
-export const bannerupload = multer({ storage:bannerStorage });
+export const storytellerupload = multer({ storage: StorytellerStorage });
+
+export const bannerupload = multer({ storage: bannerStorage });
 
 export const logoupload = multer({
   storage: storage,
@@ -101,5 +111,6 @@ export const galleryupload = multer({
 
 export const aboutupload = multer({
   storage: aboutStorage,
-  limits: { fileSize: 1 * 1024 * 1024 },
+
+  fileFilter,
 });

@@ -2,10 +2,12 @@
 import { ChevronLeft, ChevronRight, Clock, MapPin, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const Hero = ({ slider }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const pathname = usePathname();
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -55,6 +57,22 @@ const Hero = ({ slider }) => {
           <div className="text-white animate-fade-in-up">
             {slider?.[currentSlide] && (
               <>
+                {/* BREADCRUMB */}
+              {pathname !== "/" && <nav className="text-sm md:text-base mb-2">
+                  <ol className="list-none p-0 inline-flex">
+                    <li className="flex items-center text-2xl">
+                      <Link href="/" className="hover:underline">
+                        Home
+                      </Link>
+                      <span className="mx-2">/</span>
+                    </li>
+                    <li className="flex items-center text-2xl">
+                      <span className="text-amber-500 capitalize">
+                        {pathname.replace("/", "")}
+                      </span>
+                    </li>
+                  </ol>
+                </nav>}
                 <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight capitalize">
                   {slider[currentSlide].title}
                 </h1>

@@ -21,43 +21,43 @@ export async function getaboutus() {
   return data;
 }
 
-export async function getwhychooseus() {
-  const res = await fetch(`${process.env.BACKEND_URL}/api/getallwhychooseus`, {
-    next: { tags: ["whychooseus"] },
-  });
-  const data = await res.json();
-  return data;
-}
-export async function getourteam() {
-  const res = await fetch(`${process.env.BACKEND_URL}/api/getallourteam`, {
-    next: { tags: ["ourteam"] },
-  });
-  const data = await res.json();
-  return data;
-}
+// export async function getwhychooseus() {
+//   const res = await fetch(`${process.env.BACKEND_URL}/api/getallwhychooseus`, {
+//     next: { tags: ["whychooseus"] },
+//   });
+//   const data = await res.json();
+//   return data;
+// }
+// export async function getourteam() {
+//   const res = await fetch(`${process.env.BACKEND_URL}/api/getallourteam`, {
+//     next: { tags: ["ourteam"] },
+//   });
+//   const data = await res.json();
+//   return data;
+// }
 
-export async function gettestimonials() {
-  const res = await fetch(`${process.env.BACKEND_URL}/api/getalltestimonial`, {
-    next: { tags: ["testimonials"] },
-  });
-  const data = await res.json();
-  return data;
-}
-export async function getservices() {
-  const res = await fetch(`${process.env.BACKEND_URL}/api/getallservices`, {
-    next: { tags: ["services"] },
-  });
-  const data = await res.json();
-  return data;
-}
+// export async function gettestimonials() {
+//   const res = await fetch(`${process.env.BACKEND_URL}/api/getalltestimonial`, {
+//     next: { tags: ["testimonials"] },
+//   });
+//   const data = await res.json();
+//   return data;
+// }
+// export async function getservices() {
+//   const res = await fetch(`${process.env.BACKEND_URL}/api/getallservices`, {
+//     next: { tags: ["services"] },
+//   });
+//   const data = await res.json();
+//   return data;
+// }
 
-export async function getfaq() {
-  const res = await fetch(`${process.env.BACKEND_URL}/api/getfaq`, {
-    next: { tags: ["faq"] },
-  });
-  const data = await res.json();
-  return data;
-}
+// export async function getfaq() {
+//   const res = await fetch(`${process.env.BACKEND_URL}/api/getfaq`, {
+//     next: { tags: ["faq"] },
+//   });
+//   const data = await res.json();
+//   return data;
+// }
 
 // export async function getmenu() {
 //   const res = await fetch(`${process.env.BACKEND_URL}/api/getallmenu`, {
@@ -78,7 +78,7 @@ export async function getfaq() {
 
 export async function getcachedgallery() {
   const res = await fetch(
-    `${process.env.BACKEND_URL}/api/getallgallery?page=1&limit=6`,
+    `${process.env.BACKEND_URL}/api/getallgallery?page=1&limit=9`,
     { next: { tags: ["homegallery"] } }
   );
   const data = await res.json();

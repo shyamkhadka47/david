@@ -6,24 +6,24 @@ import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../hooks/axiosConfig';
 
 const AddNewSlider = () => {
-  const getserviceslugs = async () => {
-    try {
-      const res = await axiosInstance.get('/getallservices');
-      if (res.status == 200) {
-        setServiceSlugs(() => res?.data?.data.map((el: any) => el.slug));
-      }
-    } catch (error) {
-      if (isAxiosError(error)) {
-        return toast.error(error?.response?.data?.message);
-      }
-    }
-  };
+  // const getserviceslugs = async () => {
+  //   try {
+  //     const res = await axiosInstance.get('/getallservices');
+  //     if (res.status == 200) {
+  //       setServiceSlugs(() => res?.data?.data.map((el: any) => el.slug));
+  //     }
+  //   } catch (error) {
+  //     if (isAxiosError(error)) {
+  //       return toast.error(error?.response?.data?.message);
+  //     }
+  //   }
+  // };
 
   const navigate = useNavigate();
   const [mainpage, setMainpage] = React.useState('');
-  const [servicepage, setServicepage] = React.useState('');
+  // const [servicepage, setServicepage] = React.useState('');
   const [page, setPage] = React.useState('');
-  const [serviceslug, setServiceSlugs] = React.useState([]);
+  // const [serviceslug, setServiceSlugs] = React.useState([]);
   const [data, setData] = React.useState({
     title: '',
 
@@ -39,11 +39,11 @@ const AddNewSlider = () => {
   const handlemainpageChange = (e: any) => {
     setMainpage(e.target.value);
     setPage(e.target.value);
-    setServicepage('');
+    // setServicepage('');
   };
 
   const handleServicePageChange = (e: any) => {
-    setServicepage(e.target.value);
+    // setServicepage(e.target.value);
     setPage(e.target.value);
     setMainpage('');
   };
@@ -69,7 +69,7 @@ const AddNewSlider = () => {
       const formdata = new FormData();
       formdata.append('page', page);
       formdata.append('title', data.title);
-     
+
       formdata.append('description', data.description);
       formdata.append('image', imgsrc);
       const res = await axiosInstance.post('/addnewslider', formdata);
@@ -83,17 +83,17 @@ const AddNewSlider = () => {
     } finally {
       setData({
         title: '',
- 
+
         description: '',
       });
       setImgSrc(null);
       setMainpage('');
-      setServicepage('');
+      // setServicepage('');
       setPage('');
     }
   };
   React.useEffect(() => {
-    getserviceslugs();
+    // getserviceslugs();
   }, []);
 
   return (
@@ -113,12 +113,11 @@ const AddNewSlider = () => {
               <option>Choose Main Page</option>
               <option value="home">Home</option>
               <option value="about">About</option>
-              <option value="services">Services</option>
-              <option value="servicearea">Service-Area</option>
+
               <option value="gallery">Gallery</option>
               <option value="Contact">Contact</option>
             </select>
-            <select
+            {/* <select
               name="page"
               value={servicepage}
               onChange={(e) => handleServicePageChange(e)}
@@ -131,7 +130,7 @@ const AddNewSlider = () => {
                     {el}
                   </option>
                 ))}
-            </select>
+            </select> */}
           </div>
 
           <input
@@ -149,7 +148,7 @@ const AddNewSlider = () => {
             className=" rounded-md w-[500px]  h-[60px] p-5 text-black bg-[#f1f3f9] outline-none"
             placeholder="Enter Title"
           />
-          
+
           <textarea
             value={data.description}
             onChange={(e: any) => handleChange(e)}
@@ -199,7 +198,7 @@ const AddNewSlider = () => {
         <input
           type="submit"
           onClick={() => {
-            setData({ title: '',  description: '' });
+            setData({ title: '', description: '' });
             setImgSrc(null);
             navigate('/slider');
           }}

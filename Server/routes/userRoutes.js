@@ -24,6 +24,7 @@ import videoController from "../controllers/videoController.js";
 import categoryController from "../controllers/categoryController.js";
 import BannerVideoController from "../controllers/bannerVideoController.js";
 import StorytellerController from "../controllers/StorytellerController.js";
+import aboveFooterController from "../controllers/aboveFooterController.js";
 
 const Router = express.Router();
 
@@ -162,7 +163,7 @@ Router.post(
   galleryController.addNewGallery
 );
 Router.get("/getallgallery", galleryController.getAllGallery);
-Router.get("/getrandomgallery", galleryController.getRandomGallery)
+// Router.get("/getrandomgallery", galleryController.getRandomGallery)
 Router.get(
   "/getsinglegallery/:id",
   protect,
@@ -180,14 +181,14 @@ Router.delete("/deletegallery/:id", protect, galleryController.deleteGallery);
 Router.post(
   "/addaboutus",
   protect,
-  aboutupload.single("image"),
+  aboutupload.array("images", 2),
   aboutController.addAboutUs
 );
 Router.get("/getaboutus", aboutController.getAboutUs);
 Router.put(
   "/updateaboutus",
   protect,
-  aboutupload.single("image"),
+  aboutupload.array("images", 2),
   aboutController.updateAboutUs
 );
 
@@ -211,5 +212,15 @@ Router.get("/getallstories", StorytellerController.getallstories)
 Router.get("/getsinglestory/:slug", StorytellerController.getsinglestory)
 Router.put("/updatestory/:slug", protect, storytellerupload.single("image"), StorytellerController.updatestory)
 Router.delete("/deletestory/:slug", protect, StorytellerController.deletestory)
+
+// PAGE CONTENT 
+
+// PAGE CONTENTS
+Router.post("/addpagecontent", protect, aboveFooterController.addContent)
+Router.get("/getallpagecontent", aboveFooterController.getAllContent)
+Router.get("/getcontentbypage/:page", aboveFooterController.getSingleContentbyPage)
+Router.get("/getpagecontentbyid/:id", protect, aboveFooterController.getSingleContent)
+Router.put("/editcontent/:id", protect,aboveFooterController.updateContent)
+Router.delete("/deletecontent/:id", protect, aboveFooterController.deleteContent)
 
 export default Router;
