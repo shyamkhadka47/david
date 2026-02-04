@@ -161,7 +161,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
               </li>
 
               {/* STORY TELLER */}
-              <li>
+              {/* <li>
                 <NavLink
                   to="/story-tellers"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
@@ -172,7 +172,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   <FaBlog size={20} />
                   Story Teller
                 </NavLink>
-              </li>
+              </li> */}
 
               {/* Sliders  */}
               <li>
@@ -200,7 +200,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
               </li>
 
               {/* BANNER VIDEOS */}
-              <li>
+              {/* <li>
                 <NavLink
                   to="/banner-videos"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
@@ -210,7 +210,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   <BsSliders size={20} />
                   Banner Videos
                 </NavLink>
-              </li>
+              </li> */}
               {/* Videos */}
               <li>
                 <NavLink
