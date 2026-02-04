@@ -114,9 +114,9 @@ const MetaData = () => {
                     >
                       <td className="p-4 py-5 border border-r">{index + 1}</td>
                       <td className="p-4 py-5 border border-r">{meta.page}</td>
-                      <td className="p-4 py-5 border border-r">{meta.title}</td>
+                      <td className="p-4 py-5 border border-r">{meta.title.slice(0,30)}...</td>
                       <td className="p-4 py-5 border border-r max-w-[300px] truncate">
-                        {meta.description}
+                        {meta.description.slice(0,30)}...
                       </td>
                       <td className="p-4 py-5 border border-r text-center">
                         <div className="flex justify-center gap-2">
