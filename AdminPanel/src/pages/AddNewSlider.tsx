@@ -113,6 +113,7 @@ const AddNewSlider = () => {
               <option>Choose Main Page</option>
               <option value="home">Home</option>
               <option value="about">About</option>
+              <option value="videos">Videos</option>
 
               <option value="gallery">Gallery</option>
               <option value="Contact">Contact</option>

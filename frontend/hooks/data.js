@@ -85,6 +85,15 @@ export async function getcachedgallery() {
   return data;
 }
 
+export async function getvideos() {
+  const res = await fetch(`${process.env.BACKEND_URL}/api/getallvideo`, {
+    next: { tags: ["videos"] },
+  });
+
+  const data = await res.json();
+  return data;
+}
+
 export async function getmetadata() {
   const res = await fetch(`${process.env.BACKEND_URL}/api/getallmetadata`, {
     next: { tags: ["meta"] },

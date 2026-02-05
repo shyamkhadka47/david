@@ -60,13 +60,13 @@ const Hero = ({ slider }) => {
                 {/* BREADCRUMB */}
               {pathname !== "/" && <nav className="text-sm md:text-base mb-2">
                   <ol className="list-none p-0 inline-flex">
-                    <li className="flex items-center text-2xl">
+                    <li className="flex items-center text-md">
                       <Link href="/" className="hover:underline">
                         Home
                       </Link>
                       <span className="mx-2">/</span>
                     </li>
-                    <li className="flex items-center text-2xl">
+                    <li className="flex items-center text-md">
                       <span className="text-amber-500 capitalize">
                         {pathname.replace("/", "")}
                       </span>

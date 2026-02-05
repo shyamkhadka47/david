@@ -19,7 +19,7 @@ const GalleryImageSection = () => {
     setLoading(true);
     try {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/getallgallery?page=${page}&limit=3`
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/getallgallery?page=${page}&limit=9`
       );
 
       const result = await res.json();
